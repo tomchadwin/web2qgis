@@ -23,10 +23,12 @@
 """
 
 import os
+import random
 
 from PyQt5 import uic
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QUrl
+
 from qgis.PyQt.QtWebKitWidgets import QWebView
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -94,4 +96,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
             }
         """)
         self.iface.addRasterLayer(
-            "type=xyz&url=" + xyzs[0].replace("{s}", "a").replace("{r}", ""), "foo", "wms")
+            "type=xyz&url=" + xyzs[0].replace(
+                "{s}", random.choice("abc")).replace(
+                    "{r}", ""),
+            "foo", "wms")
