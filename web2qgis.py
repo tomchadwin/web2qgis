@@ -62,7 +62,7 @@ class web2qgis:
                 QCoreApplication.installTranslator(self.translator)
 
         # Create the dialog (after translation) and keep reference
-        self.dlg = web2qgisDialog()
+        self.dlg = web2qgisDialog(self.iface)
 
         # Declare instance attributes
         self.actions = []

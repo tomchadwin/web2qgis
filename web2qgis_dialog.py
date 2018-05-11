@@ -34,7 +34,7 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 
 
 class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
-    def __init__(self, parent=None):
+    def __init__(self, iface, parent=None):
         """Constructor."""
         super(web2qgisDialog, self).__init__(parent)
         # Set up the user interface from Designer.
@@ -43,6 +43,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+        self.iface = iface
         self.loadButton.clicked.connect(self.loadMap)
 
     def loadMap(self):
@@ -72,14 +73,25 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         return result
 
     def getLeafletMap(self, mainframe):
-        map = mainframe.evaluateJavaScript("""
+        xyzs = mainframe.evaluateJavaScript("""
             (function (){
+              urls = []
               for(var key in window) {
                 var value = window[key];
                 if (value instanceof L.Map) {
-                  return value._layers;
+                  for(var lyr in value._layers) {
+                    if (value._layers[lyr] instanceof L.TileLayer) {
+					  urls.push(getXYZ(value._layers[lyr]));
+                    }
+                  }
                 }
               }
+              return urls;
             }());
+            
+            function getXYZ(lyr) {
+                return lyr._url;
+            }
         """)
-        print(map)
+        self.iface.addRasterLayer(
+            "type=xyz&url=" + xyzs[0].replace("{s}", "a").replace("{r}", ""), "foo", "wms")
