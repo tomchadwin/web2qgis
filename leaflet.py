@@ -33,28 +33,28 @@ def detectLeaflet(mainframe):
     return result
 
 def getLeafletMap(mainframe, iface):
-    xyzs = mainframe.evaluateJavaScript("""
+    lyrs = mainframe.evaluateJavaScript("""
         (function (){
-          urls = []
+          lyrs = []
           for(var key in window) {
             var value = window[key];
             if (value instanceof L.Map) {
               for(var lyr in value._layers) {
                 if (value._layers[lyr] instanceof L.TileLayer) {
-                  urls.push(getXYZ(value._layers[lyr]));
+                  lyrs.push(['xyz', getXYZ(value._layers[lyr])]);
                 }
               }
             }
           }
-          return urls;
+          return lyrs;
         }());
         
         function getXYZ(lyr) {
             return lyr._url;
         }
     """)
-    iface.addRasterLayer(
-        "type=xyz&url=" + xyzs[0].replace(
-            "{s}", random.choice("abc")).replace(
-                "{r}", ""),
-        "foo", "wms")
+    for lyr in lyrs:
+        if lyr[0] == "xyz":
+            xyzUrl = lyr[1].replace("{s}",
+                                 random.choice("abc")).replace("{r}", "")
+            iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
