@@ -24,6 +24,8 @@
 
 import random
 
+from qgis.core import QgsVectorLayer, QgsPointXY, QgsFeature, QgsGeometry, QgsProject
+
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
     if detectResult is None:
@@ -43,6 +45,9 @@ def getLeafletMap(mainframe, iface):
                 if (value._layers[lyr] instanceof L.TileLayer) {
                   lyrs.push(['xyz', getXYZ(value._layers[lyr])]);
                 }
+                if (value._layers[lyr] instanceof L.Marker) {
+                  lyrs.push(['marker', getMarker(value._layers[lyr])]);
+                }
               }
             }
           }
@@ -52,9 +57,32 @@ def getLeafletMap(mainframe, iface):
         function getXYZ(lyr) {
             return lyr._url;
         }
+        
+        function getMarker(lyr) {
+            return lyr._latlng;
+        }
     """)
     for lyr in lyrs:
         if lyr[0] == "xyz":
             xyzUrl = lyr[1].replace("{s}",
                                  random.choice("abc")).replace("{r}", "")
             iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
+        if lyr[0] == "marker":
+            markerLayer = QgsVectorLayer('Point?crs=epsg:4326',
+                                         'point' ,
+                                         'memory')
+ 
+            # Set the provider to accept the data source
+            prov = markerLayer.dataProvider()
+            point = QgsPointXY(lyr[1]["lng"], lyr[1]["lat"])
+             
+            # Add a new feature and assign the geometry
+            feat = QgsFeature()
+            feat.setGeometry(QgsGeometry.fromPointXY(point))
+            prov.addFeatures([feat])
+             
+            # Update extent of the layer
+            markerLayer.updateExtents()
+             
+            # Add the layer to the Layers panel
+            QgsProject.instance().addMapLayers([markerLayer])
