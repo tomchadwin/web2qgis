@@ -23,13 +23,14 @@
 """
 
 import os
-import random
 
 from PyQt5 import uic
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QUrl
 
 from qgis.PyQt.QtWebKitWidgets import QWebView
+
+from web2qgis.leaflet import detectLeaflet, getLeafletMap
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'web2qgis_dialog_base.ui'))
@@ -59,44 +60,9 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.detectMap(self.mainframe)
 
     def detectMap(self, mainframe):
-        leaflet = self.detectLeaflet(mainframe)
+        leaflet = detectLeaflet(mainframe)
         if leaflet:
             self.feedbackLabel.setText("Leaflet map detected")
-            self.getLeafletMap(mainframe)
+            getLeafletMap(mainframe, self.iface)
         else:
             self.feedbackLabel.setText("No map detected")
-
-    def detectLeaflet(self, mainframe):
-        detectResult = mainframe.evaluateJavaScript("L.version")
-        if detectResult is None:
-            result = False
-        else:
-            result = True
-        return result
-
-    def getLeafletMap(self, mainframe):
-        xyzs = mainframe.evaluateJavaScript("""
-            (function (){
-              urls = []
-              for(var key in window) {
-                var value = window[key];
-                if (value instanceof L.Map) {
-                  for(var lyr in value._layers) {
-                    if (value._layers[lyr] instanceof L.TileLayer) {
-					  urls.push(getXYZ(value._layers[lyr]));
-                    }
-                  }
-                }
-              }
-              return urls;
-            }());
-            
-            function getXYZ(lyr) {
-                return lyr._url;
-            }
-        """)
-        self.iface.addRasterLayer(
-            "type=xyz&url=" + xyzs[0].replace(
-                "{s}", random.choice("abc")).replace(
-                    "{r}", ""),
-            "foo", "wms")
