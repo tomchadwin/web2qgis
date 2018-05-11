@@ -24,7 +24,11 @@
 
 import random
 
-from qgis.core import QgsVectorLayer, QgsPointXY, QgsFeature, QgsGeometry, QgsProject
+from qgis.core import QgsVectorLayer,
+                      QgsPointXY,
+                      QgsFeature,
+                      QgsGeometry,
+                      QgsProject
 
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
