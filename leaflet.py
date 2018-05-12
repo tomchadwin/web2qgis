@@ -54,6 +54,9 @@ def getLeafletMap(mainframe, iface):
                 if (value._layers[lyr] instanceof L.Marker) {
                   lyrs.push(['marker', getMarker(value._layers[lyr])]);
                 }
+                if (value._layers[lyr] instanceof L.Polyline) {
+                  lyrs.push(['polyline', getPolyline(value._layers[lyr])]);
+                }
               }
             }
           }
@@ -67,7 +70,10 @@ def getLeafletMap(mainframe, iface):
         function getMarker(lyr) {
             return lyr._latlng;
         }
-    """)
+        
+        function getPolyline(lyr) {
+            return lyr._latlngs;
+        }    """)
     while lyrs is None:
         pass
     for lyr in lyrs:
@@ -85,7 +91,7 @@ def getLeafletMap(mainframe, iface):
         elif lyr[0] == "marker":
             print("marker")
             markerLayer = QgsVectorLayer('Point?crs=epsg:4326',
-                                         'point' ,
+                                         'point',
                                          'memory')
  
             # Set the provider to accept the data source
@@ -102,5 +108,28 @@ def getLeafletMap(mainframe, iface):
              
             # Add the layer to the Layers panel
             QgsProject.instance().addMapLayers([markerLayer])
+        elif lyr[0] == "polyline":
+            print("polyline")
+            points = []
+            for point in lyr[1]:
+                points.append("%s %s" % (point["lng"], point["lat"]))
+            linestring = ",".join(points)
+            linestringLayer = QgsVectorLayer('LineString?crs=epsg:4326',
+                                             'line',
+                                             'memory')
+ 
+            # Set the provider to accept the data source
+            prov = linestringLayer.dataProvider()
+
+            # Add a new feature and assign the geometry
+            feat = QgsFeature()
+            feat.setGeometry(QgsGeometry.fromWkt("LINESTRING(%s)" % linestring))
+            prov.addFeatures([feat])
+             
+            # Update extent of the layer
+            linestringLayer.updateExtents()
+             
+            # Add the layer to the Layers panel
+            QgsProject.instance().addMapLayers([linestringLayer])
         else:
             print("Unsupported layer type")
