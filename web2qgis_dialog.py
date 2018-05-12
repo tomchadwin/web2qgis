@@ -49,7 +49,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.iface = iface
         self.loadButton.clicked.connect(self.loadMap)
         self.urlInput.setPlainText(
-            "https://leafletjs.com/examples/geojson/example.html")
+            "https://leafletjs.com/examples/geojson/")
 
     def loadMap(self):
         self.webview = QWebView()

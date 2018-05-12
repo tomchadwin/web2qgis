@@ -24,8 +24,6 @@
 
 import random
 
-from PyQt5.QtCore import QMetaType
-
 from qgis.core import (QgsVectorLayer,
                        QgsPointXY,
                        QgsFeature,
@@ -41,6 +39,7 @@ def detectLeaflet(mainframe):
     return result
 
 def getLeafletMap(mainframe, iface):
+    lyrs = None
     lyrs = mainframe.evaluateJavaScript("""
         (function (){
           lyrs = []
@@ -69,13 +68,15 @@ def getLeafletMap(mainframe, iface):
             return lyr._latlng;
         }
     """)
+    while lyrs is None:
+        pass
     for lyr in lyrs:
         if lyr[0] == "xyz":
             print("xyz")
             xyzUrl = lyr[1].replace("{s}", random.choice("abc")).replace("{r}",
                                                                          "")
             for opt, val in lyr[2].items():
-                print(opt, val)
+                # print(opt, val)
                 try:
                     xyzUrl = xyzUrl.replace("{" + opt + "}", val)
                 except:
