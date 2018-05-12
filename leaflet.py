@@ -24,11 +24,13 @@
 
 import random
 
-from qgis.core import QgsVectorLayer,
-                      QgsPointXY,
-                      QgsFeature,
-                      QgsGeometry,
-                      QgsProject
+from PyQt5.QtCore import QMetaType
+
+from qgis.core import (QgsVectorLayer,
+                       QgsPointXY,
+                       QgsFeature,
+                       QgsGeometry,
+                       QgsProject)
 
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
@@ -47,7 +49,8 @@ def getLeafletMap(mainframe, iface):
             if (value instanceof L.Map) {
               for(var lyr in value._layers) {
                 if (value._layers[lyr] instanceof L.TileLayer) {
-                  lyrs.push(['xyz', getXYZ(value._layers[lyr])]);
+				  xyzLyr = getXYZ(value._layers[lyr]);
+                  lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
                 }
                 if (value._layers[lyr] instanceof L.Marker) {
                   lyrs.push(['marker', getMarker(value._layers[lyr])]);
@@ -59,7 +62,7 @@ def getLeafletMap(mainframe, iface):
         }());
         
         function getXYZ(lyr) {
-            return lyr._url;
+            return [lyr._url, lyr.options];
         }
         
         function getMarker(lyr) {
@@ -68,10 +71,18 @@ def getLeafletMap(mainframe, iface):
     """)
     for lyr in lyrs:
         if lyr[0] == "xyz":
-            xyzUrl = lyr[1].replace("{s}",
-                                 random.choice("abc")).replace("{r}", "")
+            print("xyz")
+            xyzUrl = lyr[1].replace("{s}", random.choice("abc")).replace("{r}",
+                                                                         "")
+            for opt, val in lyr[2].items():
+                print(opt, val)
+                try:
+                    xyzUrl = xyzUrl.replace("{" + opt + "}", val)
+                except:
+                    pass
             iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
-        if lyr[0] == "marker":
+        elif lyr[0] == "marker":
+            print("marker")
             markerLayer = QgsVectorLayer('Point?crs=epsg:4326',
                                          'point' ,
                                          'memory')
@@ -90,3 +101,5 @@ def getLeafletMap(mainframe, iface):
              
             # Add the layer to the Layers panel
             QgsProject.instance().addMapLayers([markerLayer])
+        else:
+            print("Unsupported layer type")

@@ -48,7 +48,8 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.setupUi(self)
         self.iface = iface
         self.loadButton.clicked.connect(self.loadMap)
-        self.urlInput.setPlainText("https://leafletjs.com")
+        self.urlInput.setPlainText(
+            "https://leafletjs.com/examples/geojson/example.html")
 
     def loadMap(self):
         self.webview = QWebView()
@@ -59,11 +60,13 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         webpage = self.webview.page()
         self.mainframe = webpage.mainFrame()
         self.detectMap(self.mainframe)
+        for frame in self.mainframe.childFrames():
+            self.detectMap(frame)
 
-    def detectMap(self, mainframe):
-        leaflet = detectLeaflet(mainframe)
+    def detectMap(self, frame):
+        leaflet = detectLeaflet(frame)
         if leaflet:
             self.feedbackLabel.setText("Leaflet map detected")
-            getLeafletMap(mainframe, self.iface)
+            getLeafletMap(frame, self.iface)
         else:
             self.feedbackLabel.setText("No map detected")
