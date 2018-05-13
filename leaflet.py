@@ -22,7 +22,10 @@
  ***************************************************************************/
 """
 
-import random
+import os, random
+from datetime import datetime
+
+from PyQt5.QtCore import QDir
 
 from qgis.core import (QgsVectorLayer,
                        QgsPointXY,
@@ -39,44 +42,15 @@ def detectLeaflet(mainframe):
     return result
 
 def getLeafletMap(mainframe, iface):
+    scriptPath = os.path.join(os.path.dirname(__file__), "js",
+                              "getLeafletMap.js")
+    with open(scriptPath, 'r') as scriptFile:
+        script = scriptFile.read()
     lyrs = None
-    lyrs = mainframe.evaluateJavaScript("""
-        (function (){
-          lyrs = []
-          for(var key in window) {
-            var value = window[key];
-            if (value instanceof L.Map) {
-              for(var lyr in value._layers) {
-                if (value._layers[lyr] instanceof L.TileLayer) {
-				  xyzLyr = getXYZ(value._layers[lyr]);
-                  lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
-                }
-                if (value._layers[lyr] instanceof L.Marker) {
-                  lyrs.push(['marker', getMarker(value._layers[lyr])]);
-                }
-                if (value._layers[lyr] instanceof L.Polyline) {
-                  lyrs.push(['polyline', getPolyline(value._layers[lyr])]);
-                }
-              }
-            }
-          }
-          return lyrs;
-        }());
-        
-        function getXYZ(lyr) {
-            return [lyr._url, lyr.options];
-        }
-        
-        function getMarker(lyr) {
-            return lyr._latlng;
-        }
-        
-        function getPolyline(lyr) {
-            return lyr._latlngs;
-        }    """)
+    lyrs = mainframe.evaluateJavaScript(script)
     while lyrs is None:
-        pass
-    for lyr in lyrs:
+        print("Retrieving layers")
+    for count, lyr in enumerate(lyrs):
         if lyr[0] == "xyz":
             print("xyz")
             xyzUrl = lyr[1].replace("{s}", random.choice("abc")).replace("{r}",
@@ -88,6 +62,27 @@ def getLeafletMap(mainframe, iface):
                 except:
                     pass
             iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
+        elif lyr[0] == "vector":
+            print("vector")
+            tempDir = os.path.join(
+                unicode(QDir.tempPath()),
+                'web2qgis',
+                datetime.now().strftime("%Y_%m_%d-%H_%M_%S_%f"))
+            if not QDir(tempDir).exists():
+                QDir().mkpath(tempDir)
+            vectorPath = os.path.join(tempDir,
+                                      "vector" + str(count) + ".geojson")
+            with open(vectorPath, 'w') as vectorFile:
+                vectorFile.write(str(lyr[1]).replace("'", "\""))
+            vectorLayer = QgsVectorLayer(vectorPath,
+                                         "vector" + str(count),
+                                         "ogr")
+             
+            # Update extent of the layer
+            vectorLayer.updateExtents()
+             
+            # Add the layer to the Layers panel
+            QgsProject.instance().addMapLayers([vectorLayer])
         elif lyr[0] == "marker":
             print("marker")
             markerLayer = QgsVectorLayer('Point?crs=epsg:4326',
@@ -110,10 +105,6 @@ def getLeafletMap(mainframe, iface):
             QgsProject.instance().addMapLayers([markerLayer])
         elif lyr[0] == "polyline":
             print("polyline")
-            points = []
-            for point in lyr[1]:
-                points.append("%s %s" % (point["lng"], point["lat"]))
-            linestring = ",".join(points)
             linestringLayer = QgsVectorLayer('LineString?crs=epsg:4326',
                                              'line',
                                              'memory')
@@ -121,15 +112,55 @@ def getLeafletMap(mainframe, iface):
             # Set the provider to accept the data source
             prov = linestringLayer.dataProvider()
 
-            # Add a new feature and assign the geometry
-            feat = QgsFeature()
-            feat.setGeometry(QgsGeometry.fromWkt("LINESTRING(%s)" % linestring))
-            prov.addFeatures([feat])
+            if isinstance(lyr[1][0], dict):
+                print("dict")
+                lines = []
+                lines.append([lyr[1][0]])
+            else:
+                print("list")
+                lines = lyr[1][0]
+            for line in lines:
+                points = []
+                for point in line:
+                    print("^^")
+                    print(point)
+                    print("$$")
+                    points.append("%s %s" % (point["lng"], point["lat"]))
+                linestring = ",".join(points)
+
+                # Add a new feature and assign the geometry
+                feat = QgsFeature()
+                feat.setGeometry(QgsGeometry.fromWkt(
+                    "LINESTRING(%s)" % linestring))
+                prov.addFeatures([feat])
              
             # Update extent of the layer
             linestringLayer.updateExtents()
              
             # Add the layer to the Layers panel
             QgsProject.instance().addMapLayers([linestringLayer])
+        elif lyr[0] == "polygon":
+            print("polygon")
+            points = []
+            for point in lyr[1]:
+                points.append("%s %s" % (point["lng"], point["lat"]))
+            polygon = ",".join(points)
+            polygonLayer = QgsVectorLayer('Polygon?crs=epsg:4326',
+                                          'polygon',
+                                          'memory')
+ 
+            # Set the provider to accept the data source
+            prov = polygonLayer.dataProvider()
+
+            # Add a new feature and assign the geometry
+            feat = QgsFeature()
+            feat.setGeometry(QgsGeometry.fromWkt("POLYGON((%s))" % polygon))
+            prov.addFeatures([feat])
+             
+            # Update extent of the layer
+            polygonLayer.updateExtents()
+             
+            # Add the layer to the Layers panel
+            QgsProject.instance().addMapLayers([polygonLayer])
         else:
             print("Unsupported layer type")
