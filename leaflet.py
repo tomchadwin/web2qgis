@@ -73,7 +73,7 @@ def getLeafletMap(mainframe, iface):
             vectorPath = os.path.join(tempDir,
                                       "vector" + str(count) + ".geojson")
             with open(vectorPath, 'w') as vectorFile:
-                vectorFile.write(str(lyr[1]).replace("'", "\""))
+                vectorFile.write(lyr[1])
             vectorLayer = QgsVectorLayer(vectorPath,
                                          "vector" + str(count),
                                          "ogr")
