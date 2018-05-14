@@ -95,8 +95,8 @@ def getLeafletMap(mainframe, iface):
         script = scriptFile.read()
     extent = None
     extent = mainframe.evaluateJavaScript(script)
-    while extent is None:
-        print("Retrieving extent")
+    # while extent is None:
+    #     print("Retrieving extent")
     xMin, yMin, xMax, yMax = extent.split(",")
     canvas = iface.mapCanvas()
     xform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(4326),
