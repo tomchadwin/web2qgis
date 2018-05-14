@@ -31,7 +31,10 @@ from qgis.core import (QgsVectorLayer,
                        QgsPointXY,
                        QgsFeature,
                        QgsGeometry,
-                       QgsProject)
+                       QgsProject,
+                       QgsRectangle,
+                       QgsCoordinateReferenceSystem,
+                       QgsCoordinateTransform)
 
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
@@ -42,8 +45,9 @@ def detectLeaflet(mainframe):
     return result
 
 def getLeafletMap(mainframe, iface):
-    scriptPath = os.path.join(os.path.dirname(__file__), "js",
-                              "getLeafletMap.js")
+    scriptFolder = os.path.join(os.path.dirname(__file__), "js")
+
+    scriptPath = os.path.join(scriptFolder, "getLeafletMap.js")
     with open(scriptPath, 'r') as scriptFile:
         script = scriptFile.read()
     lyrs = None
@@ -83,84 +87,23 @@ def getLeafletMap(mainframe, iface):
              
             # Add the layer to the Layers panel
             QgsProject.instance().addMapLayers([vectorLayer])
-        elif lyr[0] == "marker":
-            print("marker")
-            markerLayer = QgsVectorLayer('Point?crs=epsg:4326',
-                                         'point',
-                                         'memory')
- 
-            # Set the provider to accept the data source
-            prov = markerLayer.dataProvider()
-            point = QgsPointXY(lyr[1]["lng"], lyr[1]["lat"])
-             
-            # Add a new feature and assign the geometry
-            feat = QgsFeature()
-            feat.setGeometry(QgsGeometry.fromPointXY(point))
-            prov.addFeatures([feat])
-             
-            # Update extent of the layer
-            markerLayer.updateExtents()
-             
-            # Add the layer to the Layers panel
-            QgsProject.instance().addMapLayers([markerLayer])
-        elif lyr[0] == "polyline":
-            print("polyline")
-            linestringLayer = QgsVectorLayer('LineString?crs=epsg:4326',
-                                             'line',
-                                             'memory')
- 
-            # Set the provider to accept the data source
-            prov = linestringLayer.dataProvider()
-
-            if isinstance(lyr[1][0], dict):
-                print("dict")
-                lines = []
-                lines.append([lyr[1][0]])
-            else:
-                print("list")
-                lines = lyr[1][0]
-            for line in lines:
-                points = []
-                for point in line:
-                    print("^^")
-                    print(point)
-                    print("$$")
-                    points.append("%s %s" % (point["lng"], point["lat"]))
-                linestring = ",".join(points)
-
-                # Add a new feature and assign the geometry
-                feat = QgsFeature()
-                feat.setGeometry(QgsGeometry.fromWkt(
-                    "LINESTRING(%s)" % linestring))
-                prov.addFeatures([feat])
-             
-            # Update extent of the layer
-            linestringLayer.updateExtents()
-             
-            # Add the layer to the Layers panel
-            QgsProject.instance().addMapLayers([linestringLayer])
-        elif lyr[0] == "polygon":
-            print("polygon")
-            points = []
-            for point in lyr[1]:
-                points.append("%s %s" % (point["lng"], point["lat"]))
-            polygon = ",".join(points)
-            polygonLayer = QgsVectorLayer('Polygon?crs=epsg:4326',
-                                          'polygon',
-                                          'memory')
- 
-            # Set the provider to accept the data source
-            prov = polygonLayer.dataProvider()
-
-            # Add a new feature and assign the geometry
-            feat = QgsFeature()
-            feat.setGeometry(QgsGeometry.fromWkt("POLYGON((%s))" % polygon))
-            prov.addFeatures([feat])
-             
-            # Update extent of the layer
-            polygonLayer.updateExtents()
-             
-            # Add the layer to the Layers panel
-            QgsProject.instance().addMapLayers([polygonLayer])
         else:
             print("Unsupported layer type")
+
+    scriptPath = os.path.join(scriptFolder, "getLeafletView.js")
+    with open(scriptPath, 'r') as scriptFile:
+        script = scriptFile.read()
+    extent = None
+    extent = mainframe.evaluateJavaScript(script)
+    while extent is None:
+        print("Retrieving extent")
+    xMin, yMin, xMax, yMax = extent.split(",")
+    canvas = iface.mapCanvas()
+    xform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(4326),
+                                   canvas.mapSettings().destinationCrs(),
+                                   QgsProject.instance())
+    srcExtent = QgsRectangle(float(xMin), float(yMin),
+                             float(xMax), float(yMax))
+    dstExtent = xform.transformBoundingBox(srcExtent)
+    canvas.setExtent(dstExtent)
+    canvas.refresh()
