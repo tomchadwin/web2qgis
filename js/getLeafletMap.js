@@ -34,5 +34,5 @@ function getPolyline(lyr) {
 }
 
 function getJSON(lyr) {
-    return lyr.toGeoJSON();
+    return JSON.stringify(lyr.toGeoJSON());
 }
