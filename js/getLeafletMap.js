@@ -8,7 +8,8 @@
                     console.log('tile');
                     xyzLyr = getXYZ(value._layers[lyr]);
                     lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
-                } else if (value._layers[lyr] instanceof L.Path) {
+                } else if (value._layers[lyr] instanceof L.Path || 
+                           value._layers[lyr] instanceof L.FeatureGroup) {
                     console.log('vector');
                     lyrs.push(['vector', getJSON(value._layers[lyr])]);
                 } else {
@@ -23,14 +24,6 @@
 
 function getXYZ(lyr) {
     return [lyr._url, lyr.options];
-}
-
-function getMarker(lyr) {
-    return lyr._latlng;
-}
-
-function getPolyline(lyr) {
-    return lyr._latlngs;
 }
 
 function getJSON(lyr) {
