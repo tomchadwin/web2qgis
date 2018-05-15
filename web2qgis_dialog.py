@@ -72,6 +72,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
             self.feedbackLabel.setText("No map detected")
 
     def getMap(self):
+        self.feedbackLabel.clear()
         webpage = self.webview.page()
         self.mainframe = webpage.mainFrame()
         getLeafletMap(self.mainframe, self.iface)

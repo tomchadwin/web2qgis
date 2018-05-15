@@ -13,6 +13,7 @@
             }
             for (var lyr in value._layers) {
                 if (groupedLyrs.indexOf(value._layers[lyr]._leaflet_id) != -1) {
+                    // Skip members of feature collections
                 } else if (value._layers[lyr] instanceof L.TileLayer) {
                     xyzLyr = getXYZ(value._layers[lyr]);
                     lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
