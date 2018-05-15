@@ -36,6 +36,8 @@ from qgis.core import (QgsVectorLayer,
                        QgsCoordinateReferenceSystem,
                        QgsCoordinateTransform)
 
+from web2qgis.utils import getTempDir, getScript
+
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
     if detectResult is None:
@@ -45,58 +47,44 @@ def detectLeaflet(mainframe):
     return result
 
 def getLeafletMap(mainframe, iface):
+    tempDir = getTempDir()
     scriptFolder = os.path.join(os.path.dirname(__file__), "js")
 
-    scriptPath = os.path.join(scriptFolder, "getLeafletMap.js")
-    with open(scriptPath, 'r') as scriptFile:
-        script = scriptFile.read()
+    getMapScript = getScript(scriptFolder, "getLeafletMap.js")
     lyrs = None
-    lyrs = mainframe.evaluateJavaScript(script)
+    lyrs = mainframe.evaluateJavaScript(getMapScript)
     while lyrs is None:
         print("Retrieving layers")
     for count, lyr in enumerate(lyrs):
         if lyr[0] == "xyz":
-            print("xyz")
-            xyzUrl = lyr[1].replace("{s}", random.choice("abc")).replace("{r}",
-                                                                         "")
-            for opt, val in lyr[2].items():
-                # print(opt, val)
-                try:
-                    xyzUrl = xyzUrl.replace("{" + opt + "}", val)
-                except:
-                    pass
-            iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
+            addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
-            print("vector")
-            tempDir = os.path.join(
-                unicode(QDir.tempPath()),
-                'web2qgis',
-                datetime.now().strftime("%Y_%m_%d-%H_%M_%S_%f"))
-            if not QDir(tempDir).exists():
-                QDir().mkpath(tempDir)
-            vectorPath = os.path.join(tempDir,
-                                      "vector" + str(count) + ".geojson")
-            with open(vectorPath, 'w') as vectorFile:
-                vectorFile.write(lyr[1])
-            vectorLayer = QgsVectorLayer(vectorPath,
-                                         "vector" + str(count),
-                                         "ogr")
-             
-            # Update extent of the layer
-            vectorLayer.updateExtents()
-             
-            # Add the layer to the Layers panel
-            QgsProject.instance().addMapLayers([vectorLayer])
+            addVector(lyr[1], count, tempDir)
         else:
             print("Unsupported layer type")
 
-    scriptPath = os.path.join(scriptFolder, "getLeafletView.js")
-    with open(scriptPath, 'r') as scriptFile:
-        script = scriptFile.read()
-    extent = None
-    extent = mainframe.evaluateJavaScript(script)
-    # while extent is None:
-    #     print("Retrieving extent")
+    setExtents(scriptFolder, mainframe, iface)
+
+def addVector(geoJSON, count, tempDir):
+    vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)
+    with open(vectorPath, 'w') as vectorFile:
+        vectorFile.write(geoJSON)
+    vectorLayer = QgsVectorLayer(vectorPath, "vector%d" % count, "ogr")
+    vectorLayer.updateExtents()
+    QgsProject.instance().addMapLayers([vectorLayer])
+
+def addXYZ(url, options, iface):
+    xyzUrl = url.replace("{s}", random.choice("abc")).replace("{r}", "")
+    for opt, val in options.items():
+        try:
+            xyzUrl = xyzUrl.replace("{" + opt + "}", val)
+        except:
+            pass
+    iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
+
+def setExtents(scriptFolder, mainframe, iface):
+    getExtentScript = getScript(scriptFolder, "getLeafletView.js")
+    extent = mainframe.evaluateJavaScript(getExtentScript)
     xMin, yMin, xMax, yMax = extent.split(",")
     canvas = iface.mapCanvas()
     xform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(4326),
