@@ -29,22 +29,6 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="urlInput">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>341</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-   <property name="horizontalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-  </widget>
   <widget class="QLabel" name="feedbackLabel">
    <property name="geometry">
     <rect>
@@ -69,6 +53,16 @@
    </property>
    <property name="text">
     <string>Load webpage</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="urlInput">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>50</y>
+     <width>341</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>

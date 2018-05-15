@@ -48,7 +48,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.setupUi(self)
         self.iface = iface
         self.loadButton.clicked.connect(self.loadMap)
-        self.urlInput.setPlainText(
+        self.urlInput.setText(
             "https://leafletjs.com/examples/choropleth/example.html")
 
     def loadMap(self):
