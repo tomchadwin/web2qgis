@@ -56,7 +56,9 @@ def getLeafletMap(mainframe, iface):
     while lyrs is None:
         print("Retrieving layers")
     for count, lyr in enumerate(lyrs):
-        if lyr[0] == "xyz":
+        if lyr[0] == "wms":
+            addWMS(lyr[1], lyr[2], lyr[3], iface)
+        elif lyr[0] == "xyz":
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
             addVector(lyr[1], count, tempDir)
@@ -77,10 +79,20 @@ def addXYZ(url, options, iface):
     xyzUrl = url.replace("{s}", random.choice("abc")).replace("{r}", "")
     for opt, val in options.items():
         try:
-            xyzUrl = xyzUrl.replace("{" + opt + "}", val)
+            xyzUrl = xyzUrl.replace("{%s}" % opt, val)
         except:
             pass
     iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
+
+def addWMS(url, options, crs, iface):
+    wmsLayers = options["layers"]
+    try:
+        format = options["format"]
+    except:
+        format = "image/png"
+    iface.addRasterLayer(
+        "format=%s&crs=%s&styles=&layers=%s&url=%s" % (format, crs, wmsLayers,
+                                                       url), wmsLayers, "wms")
 
 def setExtents(scriptFolder, mainframe, iface):
     getExtentScript = getScript(scriptFolder, "getLeafletView.js")

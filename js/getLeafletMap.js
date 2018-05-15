@@ -1,26 +1,34 @@
 (function (){
-    lyrs = [];
-    groupedLyrs = [];
+    var lyrs = [];
+    var groupedLyrs = [];
     for (var key in window) {
         var value = window[key];
         if (value instanceof L.Map) {
-            for (var lyr in value._layers) {
-                if (value._layers[lyr] instanceof L.LayerGroup) {
-                    value._layers[lyr].eachLayer(function(layer) {
-                        groupedLyrs.push(value._layers[lyr].getLayerId(layer));
+            var map = value;
+            var layers = map._layers;
+            for (var lyr in layers) {
+                var layer = layers[lyr];
+                if (layer instanceof L.LayerGroup) {
+                    var group = layer;
+                    group.eachLayer(function(layer) {
+                        groupedLyrs.push(group.getLayerId(layer));
                     })
                 }
             }
-            for (var lyr in value._layers) {
-                if (groupedLyrs.indexOf(value._layers[lyr]._leaflet_id) != -1) {
+            for (var lyr in layers) {
+                var layer = layers[lyr];
+                if (groupedLyrs.indexOf(layer._leaflet_id) != -1) {
                     // Skip members of feature collections
-                } else if (value._layers[lyr] instanceof L.TileLayer) {
-                    xyzLyr = getXYZ(value._layers[lyr]);
+                } else if (layer instanceof L.TileLayer.WMS) {
+                    var wmsLyr = getTiledLayer(layer);
+                    lyrs.push(['wms', wmsLyr[0], wmsLyr[1], map.options.crs.code]);
+                } else if (layer instanceof L.TileLayer) {
+                    var xyzLyr = getTiledLayer(layer);
                     lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
-                } else if (value._layers[lyr] instanceof L.LayerGroup) {
-                    lyrs.push(['vector', getJSON(value._layers[lyr])]);
-                } else if (!(value._layers[lyr] instanceof L.SVG)) {
-                    lyrs.push(['vector', getJSON(value._layers[lyr])]);
+                } else if (layer instanceof L.LayerGroup) {
+                    lyrs.push(['vector', getJSON(layer)]);
+                } else if (!(layer instanceof L.SVG)) {
+                    lyrs.push(['vector', getJSON(layer)]);
                 } else {
                     console.log('other');
                 }
@@ -30,10 +38,14 @@
     return lyrs;
 }());
 
-function getXYZ(lyr) {
-    return [lyr._url, lyr.options];
+function getTiledLayer(lyr) {
+    var url = lyr._url;
+    var options = lyr.options;
+    return [url, options];
 }
 
 function getJSON(lyr) {
-    return JSON.stringify(lyr.toGeoJSON());
+    var geoJSON = lyr.toGeoJSON();
+    var serializedGeoJSON = JSON.stringify(geoJSON);
+    return serializedGeoJSON;
 }
