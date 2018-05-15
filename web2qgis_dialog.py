@@ -54,7 +54,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
     def loadMap(self):
         self.webview = QWebView()
         self.webview.loadFinished.connect(self.mapLoaded)
-        self.webview.load(QUrl(self.urlInput.toPlainText()))
+        self.webview.load(QUrl(self.urlInput.text()))
 
     def mapLoaded(self):
         webpage = self.webview.page()
