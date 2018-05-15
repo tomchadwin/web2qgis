@@ -27,10 +27,12 @@ import os
 from PyQt5 import uic
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QDialogButtonBox
 
 from qgis.PyQt.QtWebKitWidgets import QWebView
 
 from web2qgis.leaflet import detectLeaflet, getLeafletMap
+from web2qgis.openlayers import detectOpenlayers
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'web2qgis_dialog_base.ui'))
@@ -47,6 +49,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
         self.iface = iface
+        self.button_box.button(QDialogButtonBox.Save).setEnabled(False)
         self.loadButton.clicked.connect(self.loadMap)
         self.button_box.accepted.connect(self.getMap)
         self.urlInput.setText(
@@ -66,10 +69,16 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
 
     def detectMap(self, frame):
         leaflet = detectLeaflet(frame)
+        openlayers = detectOpenlayers(frame)
         if leaflet:
             self.feedbackLabel.setText("Leaflet map detected")
+            self.button_box.button(QDialogButtonBox.Save).setEnabled(True)
+        elif openlayers:
+            self.feedbackLabel.setText("OpenLayers map detected")
+            self.button_box.button(QDialogButtonBox.Save).setEnabled(True)
         else:
             self.feedbackLabel.setText("No map detected")
+            self.button_box.button(QDialogButtonBox.Save).setEnabled(False)
 
     def getMap(self):
         self.feedbackLabel.clear()
