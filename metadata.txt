@@ -10,7 +10,7 @@
 name=web2qgis
 qgisMinimumVersion=3.0
 description=Load a webmap directly into QGIS
-version=0.1
+version=0.1.0
 author=Tom Chadwin
 email=tom.chadwin@nnpa.org.uk
 
@@ -23,7 +23,10 @@ repository=https://github.com/tomchadwin/web2qgis
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=
+    0.1.0
+    2018-05-15
+    - initial experimental version
 
 # Tags are comma separated with spaces allowed
 tags=python, html, javascript, js, web, webmap
