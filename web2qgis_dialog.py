@@ -48,6 +48,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.setupUi(self)
         self.iface = iface
         self.loadButton.clicked.connect(self.loadMap)
+        self.button_box.accepted.connect(self.getMap)
         self.urlInput.setText(
             "https://leafletjs.com/examples/choropleth/example.html")
 
@@ -67,6 +68,12 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         leaflet = detectLeaflet(frame)
         if leaflet:
             self.feedbackLabel.setText("Leaflet map detected")
-            getLeafletMap(frame, self.iface)
         else:
             self.feedbackLabel.setText("No map detected")
+
+    def getMap(self):
+        webpage = self.webview.page()
+        self.mainframe = webpage.mainFrame()
+        getLeafletMap(self.mainframe, self.iface)
+        for frame in self.mainframe.childFrames():
+            getLeafletMap(frame, self.iface)
