@@ -16,7 +16,7 @@ email=tom.chadwin@nnpa.org.uk
 
 about=Attempts to parse a remote webpage to import a webmap into a QGIS project
 
-tracker=http://bugs
+tracker=https://github.com/tomchadwin/web2qgis/issues
 repository=https://github.com/tomchadwin/web2qgis
 # End of mandatory metadata
 
@@ -31,7 +31,7 @@ changelog=
 # Tags are comma separated with spaces allowed
 tags=python, html, javascript, js, web, webmap
 
-homepage=http://homepage
+homepage=https://github.com/tomchadwin/web2qgis
 category=Web
 icon=icon.png
 # experimental flag
