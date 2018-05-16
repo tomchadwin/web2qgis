@@ -28,6 +28,7 @@ changelog=
     2018-05-16
     - OpenLayers support
     - WMS support
+    - GUI improvements
     - refactoring
 
     0.1.0
