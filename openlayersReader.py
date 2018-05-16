@@ -22,21 +22,10 @@
  ***************************************************************************/
 """
 
-import os, random
-from datetime import datetime
-
-from PyQt5.QtCore import QDir
-
-from qgis.core import (QgsVectorLayer,
-                       QgsPointXY,
-                       QgsFeature,
-                       QgsGeometry,
-                       QgsProject,
-                       QgsRectangle,
-                       QgsCoordinateReferenceSystem,
-                       QgsCoordinateTransform)
+import os
 
 from web2qgis.utils import getTempDir, getScript
+from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtents
 
 def detectOpenlayers(mainframe):
     detectResult = mainframe.evaluateJavaScript("ol")
@@ -69,44 +58,3 @@ def getOpenlayersMap(mainframe, iface):
         setExtents(scriptFolder, mainframe, iface)
     except:
         pass
-
-def addVector(geoJSON, count, tempDir):
-    vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)
-    with open(vectorPath, 'w') as vectorFile:
-        vectorFile.write(geoJSON)
-    vectorLayer = QgsVectorLayer(vectorPath, "vector%d" % count, "ogr")
-    vectorLayer.updateExtents()
-    QgsProject.instance().addMapLayers([vectorLayer])
-
-def addXYZ(url, options, iface):
-    xyzUrl = url.replace("{s}", random.choice("abc")).replace("{r}", "")
-    for opt, val in options.items():
-        try:
-            xyzUrl = xyzUrl.replace("{%s}" % opt, val)
-        except:
-            pass
-    iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
-
-def addWMS(url, options, crs, iface):
-    wmsLayers = options["layers"]
-    try:
-        format = options["format"]
-    except:
-        format = "image/png"
-    iface.addRasterLayer(
-        "format=%s&crs=%s&styles=&layers=%s&url=%s" % (format, crs, wmsLayers,
-                                                       url), wmsLayers, "wms")
-
-def setExtents(scriptFolder, mainframe, iface):
-    getExtentScript = getScript(scriptFolder, "getLeafletView.js")
-    extent = mainframe.evaluateJavaScript(getExtentScript)
-    xMin, yMin, xMax, yMax = extent.split(",")
-    canvas = iface.mapCanvas()
-    xform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(4326),
-                                   canvas.mapSettings().destinationCrs(),
-                                   QgsProject.instance())
-    srcExtent = QgsRectangle(float(xMin), float(yMin),
-                             float(xMax), float(yMax))
-    dstExtent = xform.transformBoundingBox(srcExtent)
-    canvas.setExtent(dstExtent)
-    canvas.refresh()

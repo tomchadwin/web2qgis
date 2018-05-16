@@ -31,8 +31,8 @@ from PyQt5.QtWidgets import QDialogButtonBox
 
 from qgis.PyQt.QtWebKitWidgets import QWebView
 
-from web2qgis.leaflet import detectLeaflet, getLeafletMap
-from web2qgis.openlayers import detectOpenlayers, getOpenlayersMap
+from web2qgis.leafletReader import detectLeaflet, getLeafletMap
+from web2qgis.openlayersReader import detectOpenlayers, getOpenlayersMap
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'web2qgis_dialog_base.ui'))
