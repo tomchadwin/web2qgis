@@ -67,6 +67,7 @@ class web2qgis:
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr(u'&web2qgis')
+        # TODO: We are going to let the user set this up in a future iteration
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -176,7 +177,6 @@ class web2qgis:
                 action)
             self.iface.removeToolBarIcon(action)
         # remove the toolbar
-        del self.toolbar
 
 
     def run(self):

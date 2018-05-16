@@ -46,11 +46,11 @@ def detectOpenlayers(mainframe):
         result = True
     return result
 
-def getLeafletMap(mainframe, iface):
+def getOpenlayersMap(mainframe, iface):
     tempDir = getTempDir()
     scriptFolder = os.path.join(os.path.dirname(__file__), "js")
 
-    getMapScript = getScript(scriptFolder, "getLeafletMap.js")
+    getMapScript = getScript(scriptFolder, "getOpenlayersMap.js")
     lyrs = None
     lyrs = mainframe.evaluateJavaScript(getMapScript)
     while lyrs is None:
@@ -65,7 +65,10 @@ def getLeafletMap(mainframe, iface):
         else:
             print("Unsupported layer type")
 
-    setExtents(scriptFolder, mainframe, iface)
+    try:
+        setExtents(scriptFolder, mainframe, iface)
+    except:
+        pass
 
 def addVector(geoJSON, count, tempDir):
     vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)

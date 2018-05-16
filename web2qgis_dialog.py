@@ -32,7 +32,7 @@ from PyQt5.QtWidgets import QDialogButtonBox
 from qgis.PyQt.QtWebKitWidgets import QWebView
 
 from web2qgis.leaflet import detectLeaflet, getLeafletMap
-from web2qgis.openlayers import detectOpenlayers
+from web2qgis.openlayers import detectOpenlayers, getOpenlayersMap
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'web2qgis_dialog_base.ui'))
@@ -53,7 +53,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.loadButton.clicked.connect(self.loadMap)
         self.button_box.accepted.connect(self.getMap)
         self.urlInput.setText(
-            "https://leafletjs.com/examples/wms/wms-example1.html")
+            "http://openlayers.org/en/latest/examples/attributions.html")
 
     def loadMap(self):
         self.webview = QWebView()
@@ -81,9 +81,14 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
             self.button_box.button(QDialogButtonBox.Save).setEnabled(False)
 
     def getMap(self):
-        self.feedbackLabel.clear()
         webpage = self.webview.page()
         self.mainframe = webpage.mainFrame()
-        getLeafletMap(self.mainframe, self.iface)
-        for frame in self.mainframe.childFrames():
-            getLeafletMap(frame, self.iface)
+        if self.feedbackLabel.text() == "Leaflet map detected":
+            getLeafletMap(self.mainframe, self.iface)
+            for frame in self.mainframe.childFrames():
+                getLeafletMap(frame, self.iface)
+        elif self.feedbackLabel.text() == "OpenLayers map detected":
+            getOpenlayersMap(self.mainframe, self.iface)
+            for frame in self.mainframe.childFrames():
+                getOpenlayersMap(frame, self.iface)
+        self.feedbackLabel.clear()
