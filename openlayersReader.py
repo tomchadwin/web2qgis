@@ -59,5 +59,4 @@ def getOpenlayersMap(mainframe, iface):
 def getOpenlayersView(scriptFolder, mainframe, iface):
     getExtentScript = getScript(scriptFolder, "getOpenlayersView.js")
     extent = mainframe.evaluateJavaScript(getExtentScript)
-    print(extent[0])
     setExtent(extent[0], extent[1], extent[2], extent[3], iface)

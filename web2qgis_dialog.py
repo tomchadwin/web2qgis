@@ -53,7 +53,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.loadButton.clicked.connect(self.loadMap)
         self.button_box.accepted.connect(self.getMap)
         self.urlInput.setText(
-            "http://openlayers.org/en/latest/examples/wms-tiled.html")
+            "https://leafletjs.com/examples/wms/wms-example1.html")
 
     def loadMap(self):
         self.webview = QWebView()
