@@ -66,9 +66,9 @@ def getLeafletMap(mainframe, iface):
             print("Unsupported layer type")
 
     try:
-       setExtents(scriptFolder, mainframe, iface)
+        setExtents(scriptFolder, mainframe, iface)
     except:
-       print("Failed to get extent from webmap")
+        print("Failed to get extent from webmap")
 
 def addVector(geoJSON, count, tempDir):
     vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)
