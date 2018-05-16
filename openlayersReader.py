@@ -25,7 +25,7 @@
 import os
 
 from web2qgis.utils import getTempDir, getScript
-from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtents
+from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
 
 def detectOpenlayers(mainframe):
     detectResult = mainframe.evaluateJavaScript("ol")
@@ -54,7 +54,10 @@ def getOpenlayersMap(mainframe, iface):
         else:
             print("Unsupported layer type")
 
-    try:
-        setExtents(scriptFolder, mainframe, iface)
-    except:
-        pass
+    getOpenlayersView(scriptFolder, mainframe, iface)
+
+def getOpenlayersView(scriptFolder, mainframe, iface):
+    getExtentScript = getScript(scriptFolder, "getOpenlayersView.js")
+    extent = mainframe.evaluateJavaScript(getExtentScript)
+    print(extent[0])
+    setExtent(extent[0], extent[1], extent[2], extent[3], iface)

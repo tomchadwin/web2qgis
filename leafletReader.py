@@ -25,7 +25,7 @@
 import os
 
 from web2qgis.utils import getTempDir, getScript
-from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtents
+from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
 
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
@@ -54,7 +54,10 @@ def getLeafletMap(mainframe, iface):
         else:
             print("Unsupported layer type")
 
-    try:
-        setExtents(scriptFolder, mainframe, iface)
-    except:
-        print("Failed to get extent from webmap")
+    getLeafletView(scriptFolder, mainframe, iface)
+
+def getLeafletView(scriptFolder, mainframe, iface):
+    getExtentScript = getScript(scriptFolder, "getLeafletView.js")
+    extent = mainframe.evaluateJavaScript(getExtentScript)
+    xMin, yMin, xMax, yMax = extent.split(",")
+    setExtent(xMin, yMin, xMax, yMax, iface)

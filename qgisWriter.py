@@ -62,10 +62,7 @@ def addWMS(url, options, crs, iface):
         "format=%s&crs=%s&styles=&layers=%s&url=%s" % (format, crs, wmsLayers,
                                                        url), wmsLayers, "wms")
 
-def setExtents(scriptFolder, mainframe, iface):
-    getExtentScript = getScript(scriptFolder, "getLeafletView.js")
-    extent = mainframe.evaluateJavaScript(getExtentScript)
-    xMin, yMin, xMax, yMax = extent.split(",")
+def setExtent(xMin, yMin, xMax, yMax, iface):
     canvas = iface.mapCanvas()
     xform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(4326),
                                    canvas.mapSettings().destinationCrs(),
