@@ -6,23 +6,15 @@
         if (value instanceof ol.Map) {
             var map = value;
             var layers = map.getLayers();
-            /*for (var lyr in layers) {
-                var layer = layers[lyr];
-                if (layer instanceof L.LayerGroup) {
-                    var group = layer;
-                    group.eachLayer(function(layer) {
-                        groupedLyrs.push(group.getLayerId(layer));
-                    })
-                }
-            }*/
             layers.forEach(function(layer) {
                 if (layer instanceof ol.layer.Tile) {
-                    console.log("xyz")
                     var source = layer.getSource();
                     var xyzLyr = getTiledLayer(source);
                     lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
+                } else if (layer instanceof ol.layer.Vector) {
+                    lyrs.push(['vector', getJSON(layer)]);
                 } else {
-                    //console.log("**" + layer + "**")
+                    console.log("Unsupported layer type")
                 }
             })
         }
@@ -37,7 +29,9 @@ function getTiledLayer(source) {
 }
 
 function getJSON(lyr) {
-    var geoJSON = lyr.toGeoJSON();
-    var serializedGeoJSON = JSON.stringify(geoJSON);
-    return serializedGeoJSON;
+    var source = lyr.getSource();
+    var features = source.getFeatures();
+    var geoJsonWriter = new ol.format.GeoJSON();
+    var geoJSON = geoJsonWriter.writeFeatures(features);
+    return geoJSON;
 }
