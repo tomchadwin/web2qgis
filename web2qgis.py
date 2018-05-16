@@ -67,9 +67,6 @@ class web2qgis:
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr(u'&web2qgis')
-        # TODO: We are going to let the user set this up in a future iteration
-        self.toolbar = self.iface.addToolBar(u'web2qgis')
-        self.toolbar.setObjectName(u'web2qgis')
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
