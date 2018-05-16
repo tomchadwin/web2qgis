@@ -40,10 +40,7 @@ def getOpenlayersMap(mainframe, iface):
     scriptFolder = os.path.join(os.path.dirname(__file__), "js")
 
     getMapScript = getScript(scriptFolder, "getOpenlayersMap.js")
-    lyrs = None
     lyrs = mainframe.evaluateJavaScript(getMapScript)
-    while lyrs is None:
-        print("Retrieving layers")
     for count, lyr in enumerate(lyrs):
         if lyr[0] == "wms":
             addWMS(lyr[1], lyr[2], lyr[3], iface)
