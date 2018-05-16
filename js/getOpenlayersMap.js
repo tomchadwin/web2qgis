@@ -9,12 +9,20 @@
             layers.forEach(function(layer) {
                 if (layer instanceof ol.layer.Tile) {
                     var source = layer.getSource();
-                    var xyzLyr = getTiledLayer(source);
-                    lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
+                    if (source instanceof ol.source.TileWMS) {
+                        var wmsLyr = getWMS(source);
+                        var url = wmsLyr[0];
+                        var options = wmsLyr[1];
+                        var crs = map.getView().getProjection().getCode();
+                        lyrs.push(['wms', url, options, crs]);
+                    } else {
+                        var tileLyr = getTiledLayer(source);
+                        lyrs.push(['xyz', tileLyr[0], tileLyr[1]]);
+                    }
                 } else if (layer instanceof ol.layer.Vector) {
                     lyrs.push(['vector', getJSON(layer)]);
                 } else {
-                    console.log("Unsupported layer type")
+                    console.log('Unsupported layer type')
                 }
             })
         }
@@ -25,6 +33,12 @@
 function getTiledLayer(source) {
     var url = source.getUrls()[0];
     var options = source.getProperties();
+    return [url, options];
+}
+
+function getWMS(source) {
+    var url = source.getUrls()[0];
+    var options = source.getParams();
     return [url, options];
 }
 

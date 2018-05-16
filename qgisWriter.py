@@ -50,7 +50,10 @@ def addXYZ(url, options, iface):
     iface.addRasterLayer("type=xyz&url=" + xyzUrl, xyzUrl, "wms")
 
 def addWMS(url, options, crs, iface):
-    wmsLayers = options["layers"]
+    try:
+        wmsLayers = options["layers"]
+    except:
+        wmsLayers = options["LAYERS"]
     try:
         format = options["format"]
     except:
