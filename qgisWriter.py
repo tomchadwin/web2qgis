@@ -28,17 +28,21 @@ from qgis.core import (QgsVectorLayer,
                        QgsProject,
                        QgsRectangle,
                        QgsCoordinateReferenceSystem,
-                       QgsCoordinateTransform)
+                       QgsCoordinateTransform,
+                       QgsFillSymbol)
 
 from web2qgis.utils import getTempDir, getScript
 
-def addVector(geoJSON, count, tempDir):
+def addVector(geoJSON, style, count, tempDir):
     vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)
     with open(vectorPath, 'w') as vectorFile:
         vectorFile.write(geoJSON)
     vectorLayer = QgsVectorLayer(vectorPath, "vector%d" % count, "ogr")
+    symbol = QgsFillSymbol.createSimple(style)
+    vectorLayer.renderer().setSymbol(symbol)
+    vectorLayer.triggerRepaint()
     vectorLayer.updateExtents()
-    QgsProject.instance().addMapLayers([vectorLayer])
+    QgsProject.instance().addMapLayer(vectorLayer)
 
 def addXYZ(url, options, iface):
     xyzUrl = url.replace("{s}", random.choice("abc")).replace("{r}", "")

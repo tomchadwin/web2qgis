@@ -25,6 +25,8 @@
 import os
 from datetime import datetime
 
+from web2qgis.tinycss.color3 import parse_color_string
+
 from PyQt5.QtCore import QDir
 
 def getTempDir():
@@ -41,3 +43,9 @@ def getScript(scriptFolder, scriptFilename):
     with open(scriptPath, 'r') as scriptFile:
         script = scriptFile.read()
     return script
+
+def getRGBA(color):
+        red, green, blue, alpha = parse_color_string(color)
+        rgba = ",".join([str(int(red * 255)), str(int(green * 255)),
+                         str(int(blue * 255)), str(int(alpha * 255))])
+        return rgba

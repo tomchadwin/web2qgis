@@ -22,10 +22,22 @@
  ***************************************************************************/
 """
 
-import os, yaml
+import os
 
-from web2qgis.utils import getTempDir, getScript
+from web2qgis.utils import getTempDir, getScript, getRGBA
 from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
+
+L2Q_STYLES = {
+    "weight": "outline_width",
+    "color": "color_border",
+    "fillColor": "color"
+}
+
+L2Q_TYPES = {
+    "weight": "float",
+    "color": "rgba",
+    "fillColor": "rgba"
+}
 
 def detectLeaflet(mainframe):
     detectResult = mainframe.evaluateJavaScript("L.version")
@@ -49,12 +61,28 @@ def getLeafletMap(mainframe, iface):
         elif lyr[0] == "xyz":
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
-            addVector(lyr[1], count, tempDir)
-            print(lyr[2]["body"][0])
+            style = getLeafletStyle(lyr[2])
+            addVector(lyr[1], style, count, tempDir)
         else:
             print("Unsupported layer type")
 
     getLeafletView(scriptFolder, mainframe, iface)
+
+def getLeafletStyle(leafletStyle):
+    print(type(leafletStyle))
+    qgisStyle = {}
+    if "body" in leafletStyle:
+        print("function")
+    else:
+        print(leafletStyle)
+        for k, v in leafletStyle.items():
+            if k in L2Q_STYLES:
+                if L2Q_TYPES[k] == "rgba":
+                    value = getRGBA(v)
+                else:
+                    value = str(v)
+                qgisStyle[L2Q_STYLES[k]] = value
+    return qgisStyle
 
 def getLeafletView(scriptFolder, mainframe, iface):
     getExtentScript = getScript(scriptFolder, "getLeafletView.js")
