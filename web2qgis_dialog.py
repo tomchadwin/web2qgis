@@ -53,7 +53,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.loadButton.clicked.connect(self.loadMap)
         self.button_box.accepted.connect(self.getMap)
         self.urlInput.setText(
-            "https://leafletjs.com/examples/choropleth/example.html")
+            "file:///C:/Users/tchadwin/Desktop/é/qgis2web_2018_05_17-15_08_53_455820/index.html")
 
     def loadMap(self):
         self.webview = QWebView()

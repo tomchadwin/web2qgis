@@ -56,6 +56,10 @@ function getStyle(layer) {
     var options = layer.options;
     var style = options['style'];
     var styleString = String(style);
-    var ast = esprima.parse(styleString);
+    if (style instanceof Function) {
+        var ast = esprima.parse(styleString);
+    } else {
+        var ast = style;
+    }
     return ast;
 }

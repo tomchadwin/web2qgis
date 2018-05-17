@@ -22,7 +22,7 @@
  ***************************************************************************/
 """
 
-import os
+import os, yaml
 
 from web2qgis.utils import getTempDir, getScript
 from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
