@@ -26,7 +26,9 @@
                     var xyzLyr = getTiledLayer(layer);
                     lyrs.push(['xyz', xyzLyr[0], xyzLyr[1]]);
                 } else if (layer instanceof L.LayerGroup) {
-                    lyrs.push(['vector', getJSON(layer)]);
+                    geojsonLyr = getJSON(layer);
+                    lyrStyle = getStyle(layer);
+                    lyrs.push(['vector', geojsonLyr, lyrStyle]);
                 } else if (!(layer instanceof L.SVG)) {
                     lyrs.push(['vector', getJSON(layer)]);
                 } else {
@@ -48,4 +50,12 @@ function getJSON(lyr) {
     var geoJSON = lyr.toGeoJSON();
     var serializedGeoJSON = JSON.stringify(geoJSON);
     return serializedGeoJSON;
+}
+
+function getStyle(layer) {
+    var options = layer.options;
+    var style = options['style'];
+    var styleString = String(style);
+    var ast = esprima.parse(styleString);
+    return ast;
 }

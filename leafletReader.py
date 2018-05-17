@@ -39,6 +39,8 @@ def getLeafletMap(mainframe, iface):
     tempDir = getTempDir()
     scriptFolder = os.path.join(os.path.dirname(__file__), "js")
 
+    parserScript = getScript(scriptFolder, "esprima.js")
+    mainframe.evaluateJavaScript(parserScript)
     getMapScript = getScript(scriptFolder, "getLeafletMap.js")
     lyrs = mainframe.evaluateJavaScript(getMapScript)
     for count, lyr in enumerate(lyrs):
@@ -48,6 +50,7 @@ def getLeafletMap(mainframe, iface):
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
             addVector(lyr[1], count, tempDir)
+            print(lyr[2]["body"][0])
         else:
             print("Unsupported layer type")
 
