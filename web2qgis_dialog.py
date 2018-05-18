@@ -53,7 +53,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.loadButton.clicked.connect(self.loadMap)
         self.button_box.accepted.connect(self.getMap)
         self.urlInput.setText(
-            "file:///C:/Users/tchadwin/Desktop/é/qgis2web_2018_05_17-15_08_53_455820/index.html")
+            "file:///C:/Users/tchadwin/Desktop/%C3%A9/qgis2web_2018_05_18-16_25_05_270745/index.html#8/59.458/-154.778")
 
     def loadMap(self):
         self.webview = QWebView()
