@@ -69,23 +69,50 @@ def getLeafletMap(mainframe, iface):
     getLeafletView(scriptFolder, mainframe, iface)
 
 def getLeafletStyle(leafletStyle):
-    print(type(leafletStyle))
-    qgisStyle = {}
     if "body" in leafletStyle:
-        print("function")
+        returnVal = getComplexStyle(leafletStyle)
+        qgisStyle = getSymbol(returnVal)
     else:
-        print(leafletStyle)
-        for k, v in leafletStyle.items():
-            if k in L2Q_STYLES:
-                if L2Q_TYPES[k] == "rgba":
-                    value = getRGBA(v)
-                else:
-                    value = str(v)
-                qgisStyle[L2Q_STYLES[k]] = value
+        qgisStyle = getSymbol(leafletStyle)
     return qgisStyle
+
+def getSymbol(leafletStyle):
+    qgisStyle = {}
+    for k, v in leafletStyle.items():
+        if k in L2Q_STYLES:
+            if L2Q_TYPES[k] == "rgba":
+                value = getRGBA(v)
+            else:
+                value = str(v)
+            qgisStyle[L2Q_STYLES[k]] = value
+    qgisStyle["size_unit"] = "Pixel"
+    qgisStyle["line_width_unit"] = "Pixel"
+    qgisStyle["outline_width_unit"] = "Pixel"
+    return qgisStyle
+
+def getComplexStyle(leafletStyle):
+    returnVal = walkAST(leafletStyle, {}, 0)
+    return returnVal
 
 def getLeafletView(scriptFolder, mainframe, iface):
     getExtentScript = getScript(scriptFolder, "getLeafletView.js")
     extent = mainframe.evaluateJavaScript(getExtentScript)
     xMin, yMin, xMax, yMax = extent.split(",")
     setExtent(xMin, yMin, xMax, yMax, iface)
+
+def walkAST(node, returnVal, depth):
+    if type(node) is list:
+        depth = depth + 1
+        for child in node:
+            returnVal = walkAST(child, returnVal, depth)
+        depth = depth - 1
+    elif type(node) is dict:
+        if node["type"] == "ReturnStatement":
+            for k in node["argument"]["properties"]:
+                returnVal[k["key"]["name"]] = k["value"]["value"]
+        else:
+            depth = depth + 1
+            for k, v in node.items():
+                returnVal = walkAST(v, returnVal, depth)
+            depth = depth - 1
+    return returnVal
