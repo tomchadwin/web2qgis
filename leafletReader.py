@@ -24,6 +24,11 @@
 
 import os
 
+from qgis.core import (QgsSingleSymbolRenderer,
+                       QgsCategorizedSymbolRenderer,
+                       QgsRendererCategory,
+                       QgsFillSymbol)
+
 from web2qgis.utils import getTempDir, getScript, getRGBA
 from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
 
@@ -61,65 +66,73 @@ def getLeafletMap(mainframe, iface):
         elif lyr[0] == "xyz":
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
-            renderer, style = getLeafletStyle(lyr[2])
-            addVector(lyr[1], renderer, style, count, tempDir)
+            renderer = getRenderer(lyr[2])
+            addVector(lyr[1], renderer, count, tempDir)
         else:
             print("Unsupported layer type")
 
     getLeafletView(scriptFolder, mainframe, iface)
 
-def getLeafletStyle(leafletStyle):
-    renderer, qgisStyle = getRenderer(leafletStyle)
-    return (renderer, qgisStyle)
+def getRenderer(leafletStyle):
+    if "body" in leafletStyle:
+        styleJSON = leafletStyle["body"][0]["body"]["body"][0]
+        if styleJSON["type"] == "SwitchStatement":
+            renderer = getCategorizedRenderer(styleJSON)
+        elif styleJSON["type"] == "IfStatement":
+            renderer = getGraduatedRenderer(styleJSON)
+        else:
+            renderer = getSingleSymbolRenderer(styleJSON)
+    else:
+        renderer = getSingleSymbolRenderer(leafletStyle)
+    return renderer
+
+def getSingleSymbolRenderer(styleJSON):
+    if "argument" in styleJSON:
+        style = getFunctionStyle(styleJSON)
+    else:
+        style = styleJSON
+    symbol = getSymbol(style)
+    renderer = QgsSingleSymbolRenderer(symbol)
+    return renderer
+
+def getCategorizedRenderer(styleJSON):
+    categories = []
+    attrName = styleJSON["discriminant"]["arguments"][0]["property"]["value"]
+    for case in styleJSON["cases"]:
+        try:
+            value = case["test"]["value"]
+        except:
+            value = "web2qgis_ELSE"
+        style = getFunctionStyle(case)
+        symbol = getSymbol(style)
+        category = QgsRendererCategory(value, symbol, value, True)
+        categories.append(category)
+    renderer = QgsCategorizedSymbolRenderer(attrName, categories)
+    return renderer
+
+def getGraduatedRenderer(styleJSON):
+    qgisStyle = getFunctionStyle(styleJSON)
+    attrName = styleJSON["test"]["left"]["left"]["property"]["value"]
+    return (attrName, qgisStyle)
+
+def getFunctionStyle(styleJSON):
+    style = walkAST(styleJSON, {})
+    return style
 
 def getSymbol(leafletStyle):
-    qgisStyle = {}
+    style = {}
     for k, v in leafletStyle.items():
         if k in L2Q_STYLES:
             if L2Q_TYPES[k] == "rgba":
                 value = getRGBA(v)
             else:
                 value = str(v)
-            qgisStyle[L2Q_STYLES[k]] = value
-    qgisStyle["size_unit"] = "Pixel"
-    qgisStyle["line_width_unit"] = "Pixel"
-    qgisStyle["outline_width_unit"] = "Pixel"
-    return qgisStyle
-
-def getRenderer(leafletStyle):
-    if "body" in leafletStyle:
-        if leafletStyle["body"][0]["body"]["body"][0]["type"] == "SwitchStatement":
-            renderer = "categorized"
-            qgisStyle = getCategorizedRenderer(leafletStyle)
-        elif leafletStyle["body"][0]["body"]["body"][0]["type"] == "IfStatement":
-            renderer = "graduated"
-            qgisStyle = getGraduatedRenderer(leafletStyle)
-        else:
-            renderer = "singleSymbol"
-            qgisStyle = getSingleSymbolRenderer(leafletStyle)
-        returnVal = getFunctionStyle(leafletStyle)
-        qgisStyle = getSymbol(returnVal)
-    else:
-        renderer = "singleSymbol"
-        qgisStyle = getSingleSymbolRenderer(leafletStyle)
-    return (renderer, qgisStyle)
-
-def getSingleSymbolRenderer(leafletStyle):
-    qgisStyle = getSymbol(leafletStyle)
-    return qgisStyle
-
-def getCategorizedRenderer(leafletStyle):
-    qgisStyle = getFunctionStyle(leafletStyle)
-    return qgisStyle
-
-def getGraduatedRenderer(leafletStyle):
-    qgisStyle = getFunctionStyle(leafletStyle)
-    return qgisStyle
-
-def getFunctionStyle(leafletStyle):
-    print(leafletStyle["body"][0]["body"]["body"][0]["type"])
-    returnVal = walkAST(leafletStyle, {}, 0)
-    return returnVal
+            style[L2Q_STYLES[k]] = value
+    style["size_unit"] = "Pixel"
+    style["line_width_unit"] = "Pixel"
+    style["outline_width_unit"] = "Pixel"
+    symbol = QgsFillSymbol.createSimple(style)
+    return symbol
 
 def getLeafletView(scriptFolder, mainframe, iface):
     getExtentScript = getScript(scriptFolder, "getLeafletView.js")
@@ -127,21 +140,17 @@ def getLeafletView(scriptFolder, mainframe, iface):
     xMin, yMin, xMax, yMax = extent.split(",")
     setExtent(xMin, yMin, xMax, yMax, iface)
 
-def walkAST(node, returnVal, depth):
+def walkAST(node, returnVal):
     if type(node) is list:
-        depth = depth + 1
         for child in node:
-            returnVal = walkAST(child, returnVal, depth)
-        depth = depth - 1
+            returnVal = walkAST(child, returnVal)
     elif type(node) is dict:
         if node["type"] == "ReturnStatement":
             for k in node["argument"]["properties"]:
                 returnVal[k["key"]["name"]] = k["value"]["value"]
         else:
-            depth = depth + 1
             for k, v in node.items():
                 # if k == "discriminant":
                     # print(v["arguments"][0]["property"]["value"])
-                returnVal = walkAST(v, returnVal, depth)
-            depth = depth - 1
+                returnVal = walkAST(v, returnVal)
     return returnVal

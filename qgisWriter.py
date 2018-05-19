@@ -33,35 +33,15 @@ from qgis.core import (QgsVectorLayer,
 
 from web2qgis.utils import getTempDir, getScript
 
-def addVector(geoJSON, renderer, style, count, tempDir):
+def addVector(geoJSON, renderer, count, tempDir):
     vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)
     with open(vectorPath, 'w') as vectorFile:
         vectorFile.write(geoJSON)
     vectorLayer = QgsVectorLayer(vectorPath, "vector%d" % count, "ogr")
-    setRenderer(renderer, vectorLayer, style)
+    vectorLayer.setRenderer(renderer)
     vectorLayer.triggerRepaint()
     vectorLayer.updateExtents()
     QgsProject.instance().addMapLayer(vectorLayer)
-
-def setRenderer(renderer, vectorLayer, style):
-    if renderer == "categorized":
-        setSingleRenderer(vectorLayer, style)
-    elif renderer == "graduated":
-        setSingleRenderer(vectorLayer, style)
-    else:
-        setSingleRenderer(vectorLayer, style)
-
-def setSingleRenderer(vectorLayer, style):
-    symbol = QgsFillSymbol.createSimple(style)
-    vectorLayer.renderer().setSymbol(symbol)
-    
-def setCategorizedRenderer(vectorLayer):
-    symbol = QgsFillSymbol.createSimple(style)
-    vectorLayer.renderer().setSymbol(symbol)
-    
-def setGraduatedRenderer(vectorLayer):
-    symbol = QgsFillSymbol.createSimple(style)
-    vectorLayer.renderer().setSymbol(symbol)
 
 def addXYZ(url, options, iface):
     xyzUrl = url.replace("{s}", random.choice("abc")).replace("{r}", "")
