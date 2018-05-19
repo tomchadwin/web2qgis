@@ -56,7 +56,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         singleSymbol = "%sqgis2web_2018_05_17-15_08_53_455820/index.html" % tplPath
         categorized = "%sqgis2web_2018_05_18-16_25_05_270745/index.html" % tplPath
         graduated = "%sqgis2web_2018_05_19-09_36_13_550344/index.html" % tplPath
-        self.urlInput.setText(categorized)
+        self.urlInput.setText(graduated)
 
     def loadMap(self):
         self.webview = QWebView()

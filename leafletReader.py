@@ -27,6 +27,8 @@ import os
 from qgis.core import (QgsSingleSymbolRenderer,
                        QgsCategorizedSymbolRenderer,
                        QgsRendererCategory,
+                       QgsGraduatedSymbolRenderer,
+                       QgsRendererRange,
                        QgsFillSymbol)
 
 from web2qgis.utils import getTempDir, getScript, getRGBA
@@ -75,13 +77,13 @@ def getLeafletMap(mainframe, iface):
 
 def getRenderer(leafletStyle):
     if "body" in leafletStyle:
-        styleJSON = leafletStyle["body"][0]["body"]["body"][0]
-        if styleJSON["type"] == "SwitchStatement":
-            renderer = getCategorizedRenderer(styleJSON)
-        elif styleJSON["type"] == "IfStatement":
+        styleJSON = leafletStyle["body"][0]["body"]["body"]
+        if styleJSON[0]["type"] == "SwitchStatement":
+            renderer = getCategorizedRenderer(styleJSON[0])
+        elif styleJSON[0]["type"] == "IfStatement":
             renderer = getGraduatedRenderer(styleJSON)
         else:
-            renderer = getSingleSymbolRenderer(styleJSON)
+            renderer = getSingleSymbolRenderer(styleJSON[0])
     else:
         renderer = getSingleSymbolRenderer(leafletStyle)
     return renderer
@@ -111,9 +113,19 @@ def getCategorizedRenderer(styleJSON):
     return renderer
 
 def getGraduatedRenderer(styleJSON):
-    qgisStyle = getFunctionStyle(styleJSON)
-    attrName = styleJSON["test"]["left"]["left"]["property"]["value"]
-    return (attrName, qgisStyle)
+    ranges = []
+    attrName = styleJSON[0]["test"]["left"]["left"]["property"]["value"]
+    print(attrName)
+    for case in styleJSON:
+        low = case["test"]["left"]["right"]["value"]
+        high = case["test"]["right"]["right"]["value"]
+        label = "%s-%s" % (low, high)
+        style = getFunctionStyle(case)
+        symbol = getSymbol(style)
+        range = QgsRendererRange(low, high, symbol, label, True)
+        ranges.append(range)
+    renderer = QgsGraduatedSymbolRenderer(attrName, ranges)
+    return renderer
 
 def getFunctionStyle(styleJSON):
     style = walkAST(styleJSON, {})
@@ -150,7 +162,5 @@ def walkAST(node, returnVal):
                 returnVal[k["key"]["name"]] = k["value"]["value"]
         else:
             for k, v in node.items():
-                # if k == "discriminant":
-                    # print(v["arguments"][0]["property"]["value"])
                 returnVal = walkAST(v, returnVal)
     return returnVal
