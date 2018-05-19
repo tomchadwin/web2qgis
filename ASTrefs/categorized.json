@@ -1,0 +1,2992 @@
+{
+	'body': [{
+		'async': False,
+		'body': {
+			'body': [{
+				'cases': [{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(89,109,204,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(89,
+									109,
+									204,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Becharof Lake'",
+						'type': 'Literal',
+						'value': 'BecharofLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(222,104,137,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(222,
+									104,
+									137,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Dall Lake'",
+						'type': 'Literal',
+						'value': 'DallLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(72,200,68,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(72,
+									200,
+									68,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Iliamna Lake'",
+						'type': 'Literal',
+						'value': 'IliamnaLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(72,145,209,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(72,
+									145,
+									209,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Kenai Lake'",
+						'type': 'Literal',
+						'value': 'KenaiLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(228,78,230,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(228,
+									78,
+									230,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Lake Clark'",
+						'type': 'Literal',
+						'value': 'LakeClark'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(232,205,47,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(232,
+									205,
+									47,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Lake George'",
+						'type': 'Literal',
+						'value': 'LakeGeorge'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(228,146,137,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(228,
+									146,
+									137,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Lake Minchumina'",
+						'type': 'Literal',
+						'value': 'LakeMinchumina'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(23,240,179,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(23,
+									240,
+									179,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Lake Nerka'",
+						'type': 'Literal',
+						'value': 'LakeNerka'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(202,62,153,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(202,
+									62,
+									153,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Lower Ugashik Lake'",
+						'type': 'Literal',
+						'value': 'LowerUgashikLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(169,63,239,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(169,
+									63,
+									239,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Naknek Lake'",
+						'type': 'Literal',
+						'value': 'NaknekLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(76,210,222,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(76,
+									210,
+									222,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Nunavakpak Lake'",
+						'type': 'Literal',
+						'value': 'NunavakpakLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(130,109,207,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(130,
+									109,
+									207,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Nuvakuk Lake'",
+						'type': 'Literal',
+						'value': 'NuvakukLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(90,207,131,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(90,
+									207,
+									131,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Skilak Lake'",
+						'type': 'Literal',
+						'value': 'SkilakLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(192,220,90,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(192,
+									220,
+									90,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Teshekpuk Lake'",
+						'type': 'Literal',
+						'value': 'TeshekpukLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(142,211,96,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(142,
+									211,
+									96,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': {
+						'raw': "'Tustumena Lake'",
+						'type': 'Literal',
+						'value': 'TustumenaLake'
+					},
+					'type': 'SwitchCase'
+				},
+				{
+					'consequent': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_lakes_0'",
+									'type': 'Literal',
+									'value': 'pane_lakes_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(203,127,61,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(203,
+									127,
+									61,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					},
+					{
+						'label': NULL,
+						'type': 'BreakStatement'
+					}],
+					'test': NULL,
+					'type': 'SwitchCase'
+				}],
+				'discriminant': {
+					'arguments': [{
+						'computed': True,
+						'object': {
+							'computed': False,
+							'object': {
+								'name': 'feature',
+								'type': 'Identifier'
+							},
+							'property': {
+								'name': 'properties',
+								'type': 'Identifier'
+							},
+							'type': 'MemberExpression'
+						},
+						'property': {
+							'raw': "'NAMES'",
+							'type': 'Literal',
+							'value': 'NAMES'
+						},
+						'type': 'MemberExpression'
+					}],
+					'callee': {
+						'name': 'String',
+						'type': 'Identifier'
+					},
+					'type': 'CallExpression'
+				},
+				'type': 'SwitchStatement'
+			}],
+			'type': 'BlockStatement'
+		},
+		'expression': False,
+		'generator': False,
+		'id': {
+			'name': 'style_lakes_0_0',
+			'type': 'Identifier'
+		},
+		'params': [{
+			'name': 'feature',
+			'type': 'Identifier'
+		}],
+		'type': 'FunctionDeclaration'
+	}],
+	'sourceType': 'script',
+	'type': 'Program'
+}

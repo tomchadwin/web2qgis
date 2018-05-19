@@ -1,0 +1,1236 @@
+{
+	'body': [{
+		'async': False,
+		'body': {
+			'body': [{
+				'alternate': NULL,
+				'consequent': {
+					'body': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_vector0_0'",
+									'type': 'Literal',
+									'value': 'pane_vector0_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(247,251,255,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(247,
+									251,
+									255,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					}],
+					'type': 'BlockStatement'
+				},
+				'test': {
+					'left': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '>=',
+						'right': {
+							'raw': '20.057000',
+							'type': 'Literal',
+							'value': 20.057
+						},
+						'type': 'BinaryExpression'
+					},
+					'operator': '&&',
+					'right': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '<=',
+						'right': {
+							'raw': '219.690600',
+							'type': 'Literal',
+							'value': 219.6906
+						},
+						'type': 'BinaryExpression'
+					},
+					'type': 'LogicalExpression'
+				},
+				'type': 'IfStatement'
+			},
+			{
+				'alternate': NULL,
+				'consequent': {
+					'body': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_vector0_0'",
+									'type': 'Literal',
+									'value': 'pane_vector0_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(199,220,239,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(199,
+									220,
+									239,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					}],
+					'type': 'BlockStatement'
+				},
+				'test': {
+					'left': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '>=',
+						'right': {
+							'raw': '219.690600',
+							'type': 'Literal',
+							'value': 219.6906
+						},
+						'type': 'BinaryExpression'
+					},
+					'operator': '&&',
+					'right': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '<=',
+						'right': {
+							'raw': '419.324200',
+							'type': 'Literal',
+							'value': 419.3242
+						},
+						'type': 'BinaryExpression'
+					},
+					'type': 'LogicalExpression'
+				},
+				'type': 'IfStatement'
+			},
+			{
+				'alternate': NULL,
+				'consequent': {
+					'body': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_vector0_0'",
+									'type': 'Literal',
+									'value': 'pane_vector0_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(114,178,215,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(114,
+									178,
+									215,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					}],
+					'type': 'BlockStatement'
+				},
+				'test': {
+					'left': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '>=',
+						'right': {
+							'raw': '419.324200',
+							'type': 'Literal',
+							'value': 419.3242
+						},
+						'type': 'BinaryExpression'
+					},
+					'operator': '&&',
+					'right': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '<=',
+						'right': {
+							'raw': '618.957800',
+							'type': 'Literal',
+							'value': 618.9578
+						},
+						'type': 'BinaryExpression'
+					},
+					'type': 'LogicalExpression'
+				},
+				'type': 'IfStatement'
+			},
+			{
+				'alternate': NULL,
+				'consequent': {
+					'body': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_vector0_0'",
+									'type': 'Literal',
+									'value': 'pane_vector0_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(40,120,184,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(40,
+									120,
+									184,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					}],
+					'type': 'BlockStatement'
+				},
+				'test': {
+					'left': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '>=',
+						'right': {
+							'raw': '618.957800',
+							'type': 'Literal',
+							'value': 618.9578
+						},
+						'type': 'BinaryExpression'
+					},
+					'operator': '&&',
+					'right': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '<=',
+						'right': {
+							'raw': '818.591400',
+							'type': 'Literal',
+							'value': 818.5914
+						},
+						'type': 'BinaryExpression'
+					},
+					'type': 'LogicalExpression'
+				},
+				'type': 'IfStatement'
+			},
+			{
+				'alternate': NULL,
+				'consequent': {
+					'body': [{
+						'argument': {
+							'properties': [{
+								'computed': False,
+								'key': {
+									'name': 'pane',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'pane_vector0_0'",
+									'type': 'Literal',
+									'value': 'pane_vector0_0'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'opacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'color',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(0,0,0,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(0,
+									0,
+									0,
+									1.0)'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'dashArray',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "''",
+									'type': 'Literal',
+									'value': ''
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineCap',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'butt'",
+									'type': 'Literal',
+									'value': 'butt'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'lineJoin',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'miter'",
+									'type': 'Literal',
+									'value': 'miter'
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'weight',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1.0',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fill',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': 'true',
+									'type': 'Literal',
+									'value': True
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillOpacity',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': '1',
+									'type': 'Literal',
+									'value': 1.0
+								}
+							},
+							{
+								'computed': False,
+								'key': {
+									'name': 'fillColor',
+									'type': 'Identifier'
+								},
+								'kind': 'init',
+								'method': False,
+								'shorthand': False,
+								'type': 'Property',
+								'value': {
+									'raw': "'rgba(8,48,107,1.0)'",
+									'type': 'Literal',
+									'value': 'rgba(8,
+									48,
+									107,
+									1.0)'
+								}
+							}],
+							'type': 'ObjectExpression'
+						},
+						'type': 'ReturnStatement'
+					}],
+					'type': 'BlockStatement'
+				},
+				'test': {
+					'left': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '>=',
+						'right': {
+							'raw': '818.591400',
+							'type': 'Literal',
+							'value': 818.5914
+						},
+						'type': 'BinaryExpression'
+					},
+					'operator': '&&',
+					'right': {
+						'left': {
+							'computed': True,
+							'object': {
+								'computed': False,
+								'object': {
+									'name': 'feature',
+									'type': 'Identifier'
+								},
+								'property': {
+									'name': 'properties',
+									'type': 'Identifier'
+								},
+								'type': 'MemberExpression'
+							},
+							'property': {
+								'raw': "'AREA_MI'",
+								'type': 'Literal',
+								'value': 'AREA_MI'
+							},
+							'type': 'MemberExpression'
+						},
+						'operator': '<=',
+						'right': {
+							'raw': '1018.225000',
+							'type': 'Literal',
+							'value': 1018.225
+						},
+						'type': 'BinaryExpression'
+					},
+					'type': 'LogicalExpression'
+				},
+				'type': 'IfStatement'
+			}],
+			'type': 'BlockStatement'
+		},
+		'expression': False,
+		'generator': False,
+		'id': {
+			'name': 'style_vector0_0_0',
+			'type': 'Identifier'
+		},
+		'params': [{
+			'name': 'feature',
+			'type': 'Identifier'
+		}],
+		'type': 'FunctionDeclaration'
+	}],
+	'sourceType': 'script',
+	'type': 'Program'
+}

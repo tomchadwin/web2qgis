@@ -61,20 +61,16 @@ def getLeafletMap(mainframe, iface):
         elif lyr[0] == "xyz":
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
-            style = getLeafletStyle(lyr[2])
-            addVector(lyr[1], style, count, tempDir)
+            renderer, style = getLeafletStyle(lyr[2])
+            addVector(lyr[1], renderer, style, count, tempDir)
         else:
             print("Unsupported layer type")
 
     getLeafletView(scriptFolder, mainframe, iface)
 
 def getLeafletStyle(leafletStyle):
-    if "body" in leafletStyle:
-        returnVal = getComplexStyle(leafletStyle)
-        qgisStyle = getSymbol(returnVal)
-    else:
-        qgisStyle = getSymbol(leafletStyle)
-    return qgisStyle
+    renderer, qgisStyle = getRenderer(leafletStyle)
+    return (renderer, qgisStyle)
 
 def getSymbol(leafletStyle):
     qgisStyle = {}
@@ -90,7 +86,38 @@ def getSymbol(leafletStyle):
     qgisStyle["outline_width_unit"] = "Pixel"
     return qgisStyle
 
-def getComplexStyle(leafletStyle):
+def getRenderer(leafletStyle):
+    if "body" in leafletStyle:
+        if leafletStyle["body"][0]["body"]["body"][0]["type"] == "SwitchStatement":
+            renderer = "categorized"
+            qgisStyle = getCategorizedRenderer(leafletStyle)
+        elif leafletStyle["body"][0]["body"]["body"][0]["type"] == "IfStatement":
+            renderer = "graduated"
+            qgisStyle = getGraduatedRenderer(leafletStyle)
+        else:
+            renderer = "singleSymbol"
+            qgisStyle = getSingleSymbolRenderer(leafletStyle)
+        returnVal = getFunctionStyle(leafletStyle)
+        qgisStyle = getSymbol(returnVal)
+    else:
+        renderer = "singleSymbol"
+        qgisStyle = getSingleSymbolRenderer(leafletStyle)
+    return (renderer, qgisStyle)
+
+def getSingleSymbolRenderer(leafletStyle):
+    qgisStyle = getSymbol(leafletStyle)
+    return qgisStyle
+
+def getCategorizedRenderer(leafletStyle):
+    qgisStyle = getFunctionStyle(leafletStyle)
+    return qgisStyle
+
+def getGraduatedRenderer(leafletStyle):
+    qgisStyle = getFunctionStyle(leafletStyle)
+    return qgisStyle
+
+def getFunctionStyle(leafletStyle):
+    print(leafletStyle["body"][0]["body"]["body"][0]["type"])
     returnVal = walkAST(leafletStyle, {}, 0)
     return returnVal
 
@@ -113,6 +140,8 @@ def walkAST(node, returnVal, depth):
         else:
             depth = depth + 1
             for k, v in node.items():
+                # if k == "discriminant":
+                    # print(v["arguments"][0]["property"]["value"])
                 returnVal = walkAST(v, returnVal, depth)
             depth = depth - 1
     return returnVal

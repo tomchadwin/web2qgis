@@ -52,8 +52,11 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         self.button_box.button(QDialogButtonBox.Save).setEnabled(False)
         self.loadButton.clicked.connect(self.loadMap)
         self.button_box.accepted.connect(self.getMap)
-        self.urlInput.setText(
-            "file:///C:/Users/tchadwin/Desktop/%C3%A9/qgis2web_2018_05_18-16_25_05_270745/index.html#8/59.458/-154.778")
+        tplPath = "file:///C:/Users/tchadwin/Desktop/%C3%A9/"
+        singleSymbol = "%sqgis2web_2018_05_17-15_08_53_455820/index.html" % tplPath
+        categorized = "%sqgis2web_2018_05_18-16_25_05_270745/index.html" % tplPath
+        graduated = "%sqgis2web_2018_05_19-09_36_13_550344/index.html" % tplPath
+        self.urlInput.setText(categorized)
 
     def loadMap(self):
         self.webview = QWebView()

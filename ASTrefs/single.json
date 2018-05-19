@@ -1,0 +1,66 @@
+body:
+  body:
+  - argument:
+      properties:
+      - computed: false
+        key: {name: weight, type: Identifier}
+        kind: init
+        method: false
+        shorthand: false
+        type: Property
+        value: {raw: '2', type: Literal, value: 2.0}
+      - computed: false
+        key: {name: opacity, type: Identifier}
+        kind: init
+        method: false
+        shorthand: false
+        type: Property
+        value: {raw: '1', type: Literal, value: 1.0}
+      - computed: false
+        key: {name: color, type: Identifier}
+        kind: init
+        method: false
+        shorthand: false
+        type: Property
+        value: {raw: '''white''', type: Literal, value: white}
+      - computed: false
+        key: {name: dashArray, type: Identifier}
+        kind: init
+        method: false
+        shorthand: false
+        type: Property
+        value: {raw: '''3''', type: Literal, value: '3'}
+      - computed: false
+        key: {name: fillOpacity, type: Identifier}
+        kind: init
+        method: false
+        shorthand: false
+        type: Property
+        value: {raw: '0.7', type: Literal, value: 0.7}
+      - computed: false
+        key: {name: fillColor, type: Identifier}
+        kind: init
+        method: false
+        shorthand: false
+        type: Property
+        value:
+          arguments:
+          - computed: false
+            object:
+              computed: false
+              object: {name: feature, type: Identifier}
+              property: {name: properties, type: Identifier}
+              type: MemberExpression
+            property: {name: density, type: Identifier}
+            type: MemberExpression
+          callee: {name: getColor, type: Identifier}
+          type: CallExpression
+      type: ObjectExpression
+    type: ReturnStatement
+  type: BlockStatement
+expression: false
+generator: false
+id: {name: style, type: Identifier}
+params:
+- {name: feature, type: Identifier}
+type: FunctionDeclaration
