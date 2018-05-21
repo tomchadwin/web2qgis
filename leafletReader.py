@@ -68,36 +68,40 @@ def getLeafletMap(mainframe, iface):
         elif lyr[0] == "xyz":
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
-            renderer = getRenderer(lyr[2])
+            print("vector")
+            renderer = getRenderer(lyr[2], mainframe)
             addVector(lyr[1], renderer, count, tempDir)
         else:
             print("Unsupported layer type")
 
     getLeafletView(scriptFolder, mainframe, iface)
 
-def getRenderer(leafletStyle):
+def getRenderer(leafletStyle, mainframe):
     if "body" in leafletStyle:
-        styleJSON = leafletStyle["body"][0]["body"]["body"]
+        try:
+            styleJSON = leafletStyle["body"][0]["body"]["body"]
+        except:
+            styleJSON = leafletStyle["body"][0]["declarations"]
         if styleJSON[0]["type"] == "SwitchStatement":
-            renderer = getCategorizedRenderer(styleJSON[0])
+            renderer = getCategorizedRenderer(styleJSON[0], mainframe)
         elif styleJSON[0]["type"] == "IfStatement":
-            renderer = getGraduatedRenderer(styleJSON)
+            renderer = getGraduatedRenderer(styleJSON, mainframe)
         else:
-            renderer = getSingleSymbolRenderer(styleJSON[0])
+            renderer = getSingleSymbolRenderer(styleJSON[0], mainframe)
     else:
-        renderer = getSingleSymbolRenderer(leafletStyle)
+        renderer = getSingleSymbolRenderer(leafletStyle, mainframe)
     return renderer
 
-def getSingleSymbolRenderer(styleJSON):
-    if "argument" in styleJSON:
-        style = getFunctionStyle(styleJSON)
+def getSingleSymbolRenderer(styleJSON, mainframe):
+    if "argument" in styleJSON or styleJSON["id"]["name"] == "w2q_style":
+        style = getFunctionStyle(styleJSON, mainframe)
     else:
         style = styleJSON
     symbol = getSymbol(style)
     renderer = QgsSingleSymbolRenderer(symbol)
     return renderer
 
-def getCategorizedRenderer(styleJSON):
+def getCategorizedRenderer(styleJSON, mainframe):
     categories = []
     attrName = styleJSON["discriminant"]["arguments"][0]["property"]["value"]
     for case in styleJSON["cases"]:
@@ -105,30 +109,30 @@ def getCategorizedRenderer(styleJSON):
             value = case["test"]["value"]
         except:
             value = "web2qgis_ELSE"
-        style = getFunctionStyle(case)
+        style = getFunctionStyle(case, mainframe)
         symbol = getSymbol(style)
         category = QgsRendererCategory(value, symbol, value, True)
         categories.append(category)
     renderer = QgsCategorizedSymbolRenderer(attrName, categories)
     return renderer
 
-def getGraduatedRenderer(styleJSON):
+def getGraduatedRenderer(styleJSON, mainframe):
     ranges = []
     attrName = styleJSON[0]["test"]["left"]["left"]["property"]["value"]
-    print(attrName)
     for case in styleJSON:
         low = case["test"]["left"]["right"]["value"]
         high = case["test"]["right"]["right"]["value"]
         label = "%s-%s" % (low, high)
-        style = getFunctionStyle(case)
+        style = getFunctionStyle(case, mainframe)
         symbol = getSymbol(style)
         range = QgsRendererRange(low, high, symbol, label, True)
         ranges.append(range)
     renderer = QgsGraduatedSymbolRenderer(attrName, ranges)
     return renderer
 
-def getFunctionStyle(styleJSON):
-    style = walkAST(styleJSON, {})
+def getFunctionStyle(styleJSON, mainframe):
+    style = walkAST(styleJSON, {}, mainframe)
+    # print(style)
     return style
 
 def getSymbol(leafletStyle):
@@ -149,18 +153,30 @@ def getSymbol(leafletStyle):
 def getLeafletView(scriptFolder, mainframe, iface):
     getExtentScript = getScript(scriptFolder, "getLeafletView.js")
     extent = mainframe.evaluateJavaScript(getExtentScript)
-    xMin, yMin, xMax, yMax = extent.split(",")
-    setExtent(xMin, yMin, xMax, yMax, iface)
+    try:
+        xMin, yMin, xMax, yMax = extent.split(",")
+        setExtent(xMin, yMin, xMax, yMax, iface)
+    except:
+        pass
 
-def walkAST(node, returnVal):
+def walkAST(node, returnVal, mainframe):
     if type(node) is list:
         for child in node:
-            returnVal = walkAST(child, returnVal)
+            returnVal = walkAST(child, returnVal, mainframe)
     elif type(node) is dict:
         if node["type"] == "ReturnStatement":
-            for k in node["argument"]["properties"]:
-                returnVal[k["key"]["name"]] = k["value"]["value"]
+            try:
+                for k in node["argument"]["properties"]:
+                    returnVal[k["key"]["name"]] = k["value"]["value"]
+            except:
+                returnVal = walkAST(node["argument"], returnVal, mainframe)
+        elif node["type"] == "CallExpression":
+            js = "esprima.parse(window.%s.toString());" % node["arguments"][1]["callee"]["name"]
+            print(js)
+            f = mainframe.evaluateJavaScript(js)
+            print(f)
+            returnVal = walkAST(f, returnVal, mainframe)
         else:
             for k, v in node.items():
-                returnVal = walkAST(v, returnVal)
+                returnVal = walkAST(v, returnVal, mainframe)
     return returnVal

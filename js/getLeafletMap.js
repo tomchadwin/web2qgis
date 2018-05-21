@@ -54,9 +54,14 @@ function getJSON(lyr) {
 
 function getStyle(layer) {
     var options = layer.options;
-    var style = options['style'];
+    if (options['style']) {
+        var style = options['style'];
+    } else {
+        var style = esprima.parse("var w2q_style = " + options['pointToLayer']);
+    }
     var styleString = String(style);
     if (style instanceof Function) {
+        console.log(styleString);
         var ast = esprima.parse(styleString);
     } else {
         var ast = style;
