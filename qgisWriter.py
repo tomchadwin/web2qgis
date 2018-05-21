@@ -33,15 +33,15 @@ from qgis.core import (QgsVectorLayer,
 
 from web2qgis.utils import getTempDir, getScript
 
-def addVector(geoJSON, renderer, count, tempDir):
+def addVector(geoJSON, count, tempDir):
     vectorPath = os.path.join(tempDir, "vector%d.geojson" % count)
     with open(vectorPath, 'w') as vectorFile:
         vectorFile.write(geoJSON)
     vectorLayer = QgsVectorLayer(vectorPath, "vector%d" % count, "ogr")
-    vectorLayer.setRenderer(renderer)
     vectorLayer.triggerRepaint()
     vectorLayer.updateExtents()
     QgsProject.instance().addMapLayer(vectorLayer)
+    return vectorLayer
 
 def addXYZ(url, options, iface):
     xyzUrl = url.replace("{s}", random.choice("abc")).replace("{r}", "")

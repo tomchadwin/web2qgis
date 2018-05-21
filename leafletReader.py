@@ -29,18 +29,22 @@ from qgis.core import (QgsSingleSymbolRenderer,
                        QgsRendererCategory,
                        QgsGraduatedSymbolRenderer,
                        QgsRendererRange,
-                       QgsFillSymbol)
+                       QgsMarkerSymbol,
+                       QgsFillSymbol,
+                       QgsSimpleMarkerSymbolLayer)
 
 from web2qgis.utils import getTempDir, getScript, getRGBA
 from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
 
 L2Q_STYLES = {
+    "radius": "size",
     "weight": "outline_width",
     "color": "color_border",
     "fillColor": "color"
 }
 
 L2Q_TYPES = {
+    "radius": "float",
     "weight": "float",
     "color": "rgba",
     "fillColor": "rgba"
@@ -69,39 +73,42 @@ def getLeafletMap(mainframe, iface):
             addXYZ(lyr[1], lyr[2], iface)
         elif lyr[0] == "vector":
             print("vector")
-            renderer = getRenderer(lyr[2], mainframe)
-            addVector(lyr[1], renderer, count, tempDir)
+            vectorLayer = addVector(lyr[1], count, tempDir)
+            geom = vectorLayer.geometryType()
+            print(geom)
+            renderer = getRenderer(lyr[2], geom, mainframe)
+            vectorLayer.setRenderer(renderer)            
         else:
             print("Unsupported layer type")
 
     getLeafletView(scriptFolder, mainframe, iface)
 
-def getRenderer(leafletStyle, mainframe):
+def getRenderer(leafletStyle, geom, mainframe):
     if "body" in leafletStyle:
         try:
             styleJSON = leafletStyle["body"][0]["body"]["body"]
         except:
             styleJSON = leafletStyle["body"][0]["declarations"]
         if styleJSON[0]["type"] == "SwitchStatement":
-            renderer = getCategorizedRenderer(styleJSON[0], mainframe)
+            renderer = getCategorizedRenderer(styleJSON[0], geom, mainframe)
         elif styleJSON[0]["type"] == "IfStatement":
-            renderer = getGraduatedRenderer(styleJSON, mainframe)
+            renderer = getGraduatedRenderer(styleJSON, geom, mainframe)
         else:
-            renderer = getSingleSymbolRenderer(styleJSON[0], mainframe)
+            renderer = getSingleSymbolRenderer(styleJSON[0], geom, mainframe)
     else:
-        renderer = getSingleSymbolRenderer(leafletStyle, mainframe)
+        renderer = getSingleSymbolRenderer(leafletStyle, geom, mainframe)
     return renderer
 
-def getSingleSymbolRenderer(styleJSON, mainframe):
+def getSingleSymbolRenderer(styleJSON, geom, mainframe):
     if "argument" in styleJSON or styleJSON["id"]["name"] == "w2q_style":
         style = getFunctionStyle(styleJSON, mainframe)
     else:
         style = styleJSON
-    symbol = getSymbol(style)
+    symbol = getSymbol(style, geom)
     renderer = QgsSingleSymbolRenderer(symbol)
     return renderer
 
-def getCategorizedRenderer(styleJSON, mainframe):
+def getCategorizedRenderer(styleJSON, geom, mainframe):
     categories = []
     attrName = styleJSON["discriminant"]["arguments"][0]["property"]["value"]
     for case in styleJSON["cases"]:
@@ -110,13 +117,13 @@ def getCategorizedRenderer(styleJSON, mainframe):
         except:
             value = "web2qgis_ELSE"
         style = getFunctionStyle(case, mainframe)
-        symbol = getSymbol(style)
+        symbol = getSymbol(style, geom)
         category = QgsRendererCategory(value, symbol, value, True)
         categories.append(category)
     renderer = QgsCategorizedSymbolRenderer(attrName, categories)
     return renderer
 
-def getGraduatedRenderer(styleJSON, mainframe):
+def getGraduatedRenderer(styleJSON, geom, mainframe):
     ranges = []
     attrName = styleJSON[0]["test"]["left"]["left"]["property"]["value"]
     for case in styleJSON:
@@ -124,7 +131,7 @@ def getGraduatedRenderer(styleJSON, mainframe):
         high = case["test"]["right"]["right"]["value"]
         label = "%s-%s" % (low, high)
         style = getFunctionStyle(case, mainframe)
-        symbol = getSymbol(style)
+        symbol = getSymbol(style, geom)
         range = QgsRendererRange(low, high, symbol, label, True)
         ranges.append(range)
     renderer = QgsGraduatedSymbolRenderer(attrName, ranges)
@@ -135,7 +142,7 @@ def getFunctionStyle(styleJSON, mainframe):
     # print(style)
     return style
 
-def getSymbol(leafletStyle):
+def getSymbol(leafletStyle, geom):
     style = {}
     for k, v in leafletStyle.items():
         if k in L2Q_STYLES:
@@ -147,7 +154,10 @@ def getSymbol(leafletStyle):
     style["size_unit"] = "Pixel"
     style["line_width_unit"] = "Pixel"
     style["outline_width_unit"] = "Pixel"
-    symbol = QgsFillSymbol.createSimple(style)
+    if geom == 0:
+        symbol = QgsMarkerSymbol.createSimple(style)
+    else:
+        symbol = QgsFillSymbol.createSimple(style)
     return symbol
 
 def getLeafletView(scriptFolder, mainframe, iface):
@@ -172,9 +182,7 @@ def walkAST(node, returnVal, mainframe):
                 returnVal = walkAST(node["argument"], returnVal, mainframe)
         elif node["type"] == "CallExpression":
             js = "esprima.parse(window.%s.toString());" % node["arguments"][1]["callee"]["name"]
-            print(js)
             f = mainframe.evaluateJavaScript(js)
-            print(f)
             returnVal = walkAST(f, returnVal, mainframe)
         else:
             for k, v in node.items():
