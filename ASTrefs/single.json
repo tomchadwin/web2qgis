@@ -1,66 +1,190 @@
-body:
-  body:
-  - argument:
-      properties:
-      - computed: false
-        key: {name: weight, type: Identifier}
-        kind: init
-        method: false
-        shorthand: false
-        type: Property
-        value: {raw: '2', type: Literal, value: 2.0}
-      - computed: false
-        key: {name: opacity, type: Identifier}
-        kind: init
-        method: false
-        shorthand: false
-        type: Property
-        value: {raw: '1', type: Literal, value: 1.0}
-      - computed: false
-        key: {name: color, type: Identifier}
-        kind: init
-        method: false
-        shorthand: false
-        type: Property
-        value: {raw: '''white''', type: Literal, value: white}
-      - computed: false
-        key: {name: dashArray, type: Identifier}
-        kind: init
-        method: false
-        shorthand: false
-        type: Property
-        value: {raw: '''3''', type: Literal, value: '3'}
-      - computed: false
-        key: {name: fillOpacity, type: Identifier}
-        kind: init
-        method: false
-        shorthand: false
-        type: Property
-        value: {raw: '0.7', type: Literal, value: 0.7}
-      - computed: false
-        key: {name: fillColor, type: Identifier}
-        kind: init
-        method: false
-        shorthand: false
-        type: Property
-        value:
-          arguments:
-          - computed: false
-            object:
-              computed: false
-              object: {name: feature, type: Identifier}
-              property: {name: properties, type: Identifier}
-              type: MemberExpression
-            property: {name: density, type: Identifier}
-            type: MemberExpression
-          callee: {name: getColor, type: Identifier}
-          type: CallExpression
-      type: ObjectExpression
-    type: ReturnStatement
-  type: BlockStatement
-expression: false
-generator: false
-id: {name: style, type: Identifier}
-params:
-- {name: feature, type: Identifier}
-type: FunctionDeclaration
+{
+	'body': [{
+		'async': False,
+		'body': {
+			'body': [{
+				'argument': {
+					'properties': [{
+						'computed': False,
+						'key': {
+							'name': 'pane',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': "'pane_lakes_0'",
+							'type': 'Literal',
+							'value': 'pane_lakes_0'
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'opacity',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': '1',
+							'type': 'Literal',
+							'value': 1.0
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'color',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': "'rgba(35,35,35,1.0)'",
+							'type': 'Literal',
+							'value': 'rgba(35,
+							35,
+							35,
+							1.0)'
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'dashArray',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': "''",
+							'type': 'Literal',
+							'value': ''
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'lineCap',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': "'butt'",
+							'type': 'Literal',
+							'value': 'butt'
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'lineJoin',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': "'miter'",
+							'type': 'Literal',
+							'value': 'miter'
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'weight',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': '1.0',
+							'type': 'Literal',
+							'value': 1.0
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'fill',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': 'true',
+							'type': 'Literal',
+							'value': True
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'fillOpacity',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': '1',
+							'type': 'Literal',
+							'value': 1.0
+						}
+					},
+					{
+						'computed': False,
+						'key': {
+							'name': 'fillColor',
+							'type': 'Identifier'
+						},
+						'kind': 'init',
+						'method': False,
+						'shorthand': False,
+						'type': 'Property',
+						'value': {
+							'raw': "'rgba(187,239,29,1.0)'",
+							'type': 'Literal',
+							'value': 'rgba(187,
+							239,
+							29,
+							1.0)'
+						}
+					}],
+					'type': 'ObjectExpression'
+				},
+				'type': 'ReturnStatement'
+			}],
+			'type': 'BlockStatement'
+		},
+		'expression': False,
+		'generator': False,
+		'id': {
+			'name': 'style_lakes_0_0',
+			'type': 'Identifier'
+		},
+		'params': [],
+		'type': 'FunctionDeclaration'
+	}],
+	'sourceType': 'script',
+	'type': 'Program'
+}

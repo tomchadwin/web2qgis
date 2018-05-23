@@ -30,8 +30,10 @@ from qgis.core import (QgsSingleSymbolRenderer,
                        QgsGraduatedSymbolRenderer,
                        QgsRendererRange,
                        QgsMarkerSymbol,
+                       QgsLineSymbol,
                        QgsFillSymbol,
-                       QgsSimpleMarkerSymbolLayer)
+                       QgsSimpleMarkerSymbolLayer,
+                       QgsWkbTypes)
 
 from web2qgis.utils import getTempDir, getScript, getRGBA
 from web2qgis.qgisWriter import addWMS, addXYZ, addVector, setExtent
@@ -41,6 +43,12 @@ L2Q_STYLES = {
     "weight": "outline_width",
     "color": "color_border",
     "fillColor": "color"
+}
+
+L2Q_LINE_STYLES = {
+    "radius": "size",
+    "weight": "outline_width",
+    "color": "line_color"
 }
 
 L2Q_TYPES = {
@@ -84,6 +92,7 @@ def getLeafletMap(mainframe, iface):
     getLeafletView(scriptFolder, mainframe, iface)
 
 def getRenderer(leafletStyle, geom, mainframe):
+    print(leafletStyle)
     if "body" in leafletStyle:
         try:
             styleJSON = leafletStyle["body"][0]["body"]["body"]
@@ -139,23 +148,30 @@ def getGraduatedRenderer(styleJSON, geom, mainframe):
 
 def getFunctionStyle(styleJSON, mainframe):
     style = walkAST(styleJSON, {}, mainframe)
-    # print(style)
     return style
 
 def getSymbol(leafletStyle, geom):
     style = {}
+    if geom == QgsWkbTypes.LineGeometry:
+        styles = L2Q_LINE_STYLES
+    else:
+        styles = L2Q_STYLES
     for k, v in leafletStyle.items():
-        if k in L2Q_STYLES:
+        if k in styles:
+            if k == "radius":
+                v = v * 2
             if L2Q_TYPES[k] == "rgba":
                 value = getRGBA(v)
             else:
                 value = str(v)
-            style[L2Q_STYLES[k]] = value
+            style[styles[k]] = value
     style["size_unit"] = "Pixel"
     style["line_width_unit"] = "Pixel"
     style["outline_width_unit"] = "Pixel"
-    if geom == 0:
+    if geom == QgsWkbTypes.PointGeometry:
         symbol = QgsMarkerSymbol.createSimple(style)
+    elif geom == QgsWkbTypes.LineGeometry:
+        symbol = QgsLineSymbol.createSimple(style)
     else:
         symbol = QgsFillSymbol.createSimple(style)
     return symbol
@@ -181,9 +197,10 @@ def walkAST(node, returnVal, mainframe):
             except:
                 returnVal = walkAST(node["argument"], returnVal, mainframe)
         elif node["type"] == "CallExpression":
-            js = "esprima.parse(window.%s.toString());" % node["arguments"][1]["callee"]["name"]
-            f = mainframe.evaluateJavaScript(js)
-            returnVal = walkAST(f, returnVal, mainframe)
+            if node["callee"]["object"]["name"] != "L":
+                js = "esprima.parse(window.%s.toString());" % node["callee"]["name"]
+                f = mainframe.evaluateJavaScript(js)
+                returnVal = walkAST(f, returnVal, mainframe)
         else:
             for k, v in node.items():
                 returnVal = walkAST(v, returnVal, mainframe)

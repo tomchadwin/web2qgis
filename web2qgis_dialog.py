@@ -56,7 +56,7 @@ class web2qgisDialog(QtWidgets.QDialog, FORM_CLASS):
         singleSymbol = "%sqgis2web_2018_05_17-15_08_53_455820/index.html" % tplPath
         categorized = "%sqgis2web_2018_05_18-16_25_05_270745/index.html" % tplPath
         graduated = "%sqgis2web_2018_05_19-09_36_13_550344/index.html" % tplPath
-        self.urlInput.setText("file:///C:/Users/tchadwin/Desktop/%C3%A9/qgis2web_2018_05_20-23_31_26_315013/index.html#2/51.2/0.0")
+        self.urlInput.setText("file:///C:/Users/tchadwin/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins/web2qgis/HTMLrefs/leaflet_point.html")
 
     def loadMap(self):
         self.webview = QWebView()
